@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Smooth narrative text streaming */
+.narrative-content p { margin-bottom: 0.75rem; }
+.narrative-content h2 { font-size: 1rem; font-weight: 700; margin: 1.25rem 0 0.5rem; }
+.narrative-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.narrative-content li { margin-bottom: 0.25rem; }
+.narrative-content strong { font-weight: 600; }
+.narrative-content hr { border-color: #e2e8f0; margin: 1rem 0; }
+.narrative-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+  background: #f1f5f9; padding: 0.1rem 0.35rem; border-radius: 0.25rem; }

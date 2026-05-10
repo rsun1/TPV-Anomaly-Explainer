@@ -1,0 +1,13 @@
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.11
+pandas==2.2.3
+statsforecast==2.0.3
+wise-pizza==0.2.9
+fastapi==0.115.6
+uvicorn==0.32.1
+anthropic==0.100.0
+httpx==0.28.1
+python-dotenv==1.0.1
+numpy==2.2.4
+plotly==6.1.1
+kaleido==0.2.1

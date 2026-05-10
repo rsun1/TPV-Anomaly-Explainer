@@ -1,0 +1,1502 @@
+{
+  "check_2023-03-10_2023-03-17": {
+    "decomp": {
+      "product": "check",
+      "anomaly_window": {
+        "start": "2023-03-10",
+        "end": "2023-03-17",
+        "days": 8
+      },
+      "baseline_window": {
+        "start": "2023-02-08",
+        "end": "2023-03-09",
+        "days": 30
+      },
+      "summary": {
+        "baseline_daily_tpv": 881985.53,
+        "anomaly_daily_tpv": 1378584.14,
+        "delta_daily_tpv": 496598.61,
+        "delta_pct": 0.563,
+        "direction": "spike"
+      },
+      "by_dimension": {
+        "merchant_industry": [
+          {
+            "segment": "professional_services",
+            "baseline_daily_tpv": 306973.22,
+            "anomaly_daily_tpv": 486654.39,
+            "delta_daily_tpv": 179681.16,
+            "pct_of_total_delta": 0.3618,
+            "direction": "spike"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 265358.87,
+            "anomaly_daily_tpv": 416216.11,
+            "delta_daily_tpv": 150857.24,
+            "pct_of_total_delta": 0.3038,
+            "direction": "spike"
+          },
+          {
+            "segment": "retail",
+            "baseline_daily_tpv": 133019.52,
+            "anomaly_daily_tpv": 203266.86,
+            "delta_daily_tpv": 70247.33,
+            "pct_of_total_delta": 0.1415,
+            "direction": "spike"
+          },
+          {
+            "segment": "ecommerce",
+            "baseline_daily_tpv": 88612.51,
+            "anomaly_daily_tpv": 136552.27,
+            "delta_daily_tpv": 47939.77,
+            "pct_of_total_delta": 0.0965,
+            "direction": "spike"
+          },
+          {
+            "segment": "payroll_staffing",
+            "baseline_daily_tpv": 88021.4,
+            "anomaly_daily_tpv": 135894.51,
+            "delta_daily_tpv": 47873.11,
+            "pct_of_total_delta": 0.0964,
+            "direction": "spike"
+          }
+        ],
+        "merchant_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 443450.66,
+            "anomaly_daily_tpv": 687633.3,
+            "delta_daily_tpv": 244182.64,
+            "pct_of_total_delta": 0.4917,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 307578.83,
+            "anomaly_daily_tpv": 485488.25,
+            "delta_daily_tpv": 177909.42,
+            "pct_of_total_delta": 0.3583,
+            "direction": "spike"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 130956.04,
+            "anomaly_daily_tpv": 205462.59,
+            "delta_daily_tpv": 74506.55,
+            "pct_of_total_delta": 0.15,
+            "direction": "spike"
+          }
+        ],
+        "payer_industry": [
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 265537.99,
+            "anomaly_daily_tpv": 416311.89,
+            "delta_daily_tpv": 150773.9,
+            "pct_of_total_delta": 0.3036,
+            "direction": "spike"
+          },
+          {
+            "segment": "manufacturing",
+            "baseline_daily_tpv": 220098.58,
+            "anomaly_daily_tpv": 345973.15,
+            "delta_daily_tpv": 125874.57,
+            "pct_of_total_delta": 0.2535,
+            "direction": "spike"
+          },
+          {
+            "segment": "retail_consumer",
+            "baseline_daily_tpv": 176325.74,
+            "anomaly_daily_tpv": 276527.27,
+            "delta_daily_tpv": 100201.53,
+            "pct_of_total_delta": 0.2018,
+            "direction": "spike"
+          },
+          {
+            "segment": "other",
+            "baseline_daily_tpv": 132028.35,
+            "anomaly_daily_tpv": 203561.43,
+            "delta_daily_tpv": 71533.08,
+            "pct_of_total_delta": 0.144,
+            "direction": "spike"
+          },
+          {
+            "segment": "tech",
+            "baseline_daily_tpv": 87994.86,
+            "anomaly_daily_tpv": 136210.4,
+            "delta_daily_tpv": 48215.54,
+            "pct_of_total_delta": 0.0971,
+            "direction": "spike"
+          }
+        ],
+        "payer_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 441621.44,
+            "anomaly_daily_tpv": 689287.49,
+            "delta_daily_tpv": 247666.06,
+            "pct_of_total_delta": 0.4987,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 308723.8,
+            "anomaly_daily_tpv": 483296.07,
+            "delta_daily_tpv": 174572.28,
+            "pct_of_total_delta": 0.3515,
+            "direction": "spike"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 131640.29,
+            "anomaly_daily_tpv": 206000.57,
+            "delta_daily_tpv": 74360.28,
+            "pct_of_total_delta": 0.1497,
+            "direction": "spike"
+          }
+        ],
+        "payer_tenure_bucket": [
+          {
+            "segment": "established_3_5yr",
+            "baseline_daily_tpv": 259283.91,
+            "anomaly_daily_tpv": 402394.83,
+            "delta_daily_tpv": 143110.91,
+            "pct_of_total_delta": 0.2882,
+            "direction": "spike"
+          },
+          {
+            "segment": "loyal_5plus_yr",
+            "baseline_daily_tpv": 247539.87,
+            "anomaly_daily_tpv": 387686.53,
+            "delta_daily_tpv": 140146.66,
+            "pct_of_total_delta": 0.2822,
+            "direction": "spike"
+          },
+          {
+            "segment": "growing_1_3yr",
+            "baseline_daily_tpv": 221416.06,
+            "anomaly_daily_tpv": 348452.26,
+            "delta_daily_tpv": 127036.2,
+            "pct_of_total_delta": 0.2558,
+            "direction": "spike"
+          },
+          {
+            "segment": "early_4_12mo",
+            "baseline_daily_tpv": 114184.57,
+            "anomaly_daily_tpv": 178650.8,
+            "delta_daily_tpv": 64466.22,
+            "pct_of_total_delta": 0.1298,
+            "direction": "spike"
+          },
+          {
+            "segment": "new_0_3mo",
+            "baseline_daily_tpv": 39561.11,
+            "anomaly_daily_tpv": 61399.72,
+            "delta_daily_tpv": 21838.61,
+            "pct_of_total_delta": 0.044,
+            "direction": "spike"
+          }
+        ]
+      },
+      "top_interactions": [
+        {
+          "dimensions": "merchant_size \u00d7 payer_size",
+          "segment": "enterprise \u00d7 enterprise",
+          "baseline_daily_tpv": 221927.25,
+          "anomaly_daily_tpv": 344888.56,
+          "delta_daily_tpv": 122961.32,
+          "pct_of_total_delta": 0.2476,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_size",
+          "segment": "professional_services \u00d7 enterprise",
+          "baseline_daily_tpv": 153425.05,
+          "anomaly_daily_tpv": 242813.04,
+          "delta_daily_tpv": 89387.99,
+          "pct_of_total_delta": 0.18,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 merchant_size",
+          "segment": "professional_services \u00d7 enterprise",
+          "baseline_daily_tpv": 154333.28,
+          "anomaly_daily_tpv": 242734.2,
+          "delta_daily_tpv": 88400.92,
+          "pct_of_total_delta": 0.178,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_industry",
+          "segment": "enterprise \u00d7 healthcare",
+          "baseline_daily_tpv": 133917.55,
+          "anomaly_daily_tpv": 207869.8,
+          "delta_daily_tpv": 73952.25,
+          "pct_of_total_delta": 0.1489,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "payer_industry \u00d7 payer_size",
+          "segment": "healthcare \u00d7 enterprise",
+          "baseline_daily_tpv": 133144.09,
+          "anomaly_daily_tpv": 205955.11,
+          "delta_daily_tpv": 72811.02,
+          "pct_of_total_delta": 0.1466,
+          "direction": "spike"
+        }
+      ]
+    },
+    "narrative": "---\n\n**TL;DR:** Check TPV spiked +56.3% (+$496K/day) from Mar 10\u201317 with the increase distributed broadly across every segment roughly in proportion to baseline share, pointing to a systemic, calendar/cycle-driven surge rather than a targeted event.\n\n**Ranked Hypotheses:**\n\n1. **Systemic mid-month billing/AP cycle surge (e.g., quarter-end pull-forward or mid-March AP run)** \u2014 Confidence: High\n   - Evidence: Every dimension's deltas track baseline share almost perfectly: merchant_industry deltas range 9.6%\u201336.2% (matching baseline mix), payer_industry 9.7%\u201330.4%, payer_size enterprise 49.9% / mid_market 35.2% / smb 15.0% (baseline shares ~50/35/15). No single segment exceeds 50% of delta. Top interaction (enterprise \u00d7 enterprise) is only 24.8%, again proportional to baseline.\n   - Mechanism: A platform-wide timing event \u2014 mid-March AP cycles, pre-quarter-end vendor payments, or a batch of large invoices being paid by check \u2014 lifts all customer cohorts uniformly. Check is the legacy rail for large B2B AP, so a cycle effect lands disproportionately on enterprise payers/merchants simply because they dominate the baseline.\n\n2. **Tax-season / 1099 & contractor settlement bulge** \u2014 Confidence: Medium\n   - Evidence: Spike is concentrated in mid-March (pre-April-15 cycle), and the largest absolute contributors are professional_services merchants (+$180K/day, 36.2%) and healthcare merchants (+$151K/day, 30.4%) \u2014 both heavy users of check for contractor, partner, and provider payouts. Manufacturing payers also surged +$126K/day (25.4%), consistent with vendor true-ups.\n   - Mechanism: Annual tax/reporting deadlines drive a temporary lift in check-based B2B disbursements (bonuses, partner distributions, provider settlements) that fades after mid-April. Effect is broad because it touches many industries simultaneously.\n\n3. **Large enterprise customer concentration (a few big payers running larger-than-usual check runs)** \u2014 Confidence: Low\u2013Medium\n   - Evidence: Enterprise merchants drove 49.2% and enterprise payers 49.9% of the delta, with enterprise\u00d7enterprise alone at 24.8% of total. Loyal (28.2%) + established (28.8%) tenure buckets dominate, while new_0_3mo is just 4.4%.\n   - Mechanism: A handful of long-tenured enterprise relationships running unusually large check batches could mimic a systemic pattern. However, the proportional distribution across industries argues against a single-customer driver \u2014 more likely many enterprise customers moving together.\n\n4. **Reporting/backfill artifact (delayed check postings cleared in this window)** \u2014 Confidence: Low\n   - Evidence: Check has a 14-day settlement window; a batch of previously pending checks marking `is_complete = TRUE` in this window could inflate observed TPV uniformly across segments.\n   - Mechanism: Settlement/ingestion lag clearing en masse would look systemic. Worth ruling out before treating the spike as real demand.\n\n**Most Diagnostic Dimension:** `payer_tenure_bucket`\nThe near-perfect proportionality across tenure buckets (every cohort contributing roughly its baseline share, with no new-account spike and no loyal-customer drop) is the strongest signal that this is an environmental/calendar event affecting the existing book uniformly, not an onboarding wave or churn-driven shift.\n\n**Key Segment Findings:**\n- `merchant_industry` \u2014 **professional_services**: 36.2% of total delta (+$179.7K/day) \u2014 largest absolute contributor, consistent with partner/contractor disbursement cycles\n- `merchant_industry` \u2014 **healthcare**: 30.4% of total delta (+$150.9K/day) \u2014 provider/claims settlement check volume\n- `payer_size` \u2014 **enterprise**: 49.9% of total delta (+$247.7K/day) \u2014 but matches baseline enterprise share (~50%), so proportional not concentrated\n- `payer_tenure_bucket` \u2014 **new_0_3mo**: only 4.4% (+$21.8K/day) \u2014 rules out onboarding-driven or new-account fraud\n- Top interaction: `merchant_size \u00d7 payer_size` \u2014 **enterprise \u00d7 enterprise**: 24.8% of delta (+$123K/day) \u2014 large but proportional to its baseline weight; no true intersection concentration\n\n**Recommended Next Steps:**\n- [ ] Pull daily check TPV for Mar 10\u201317 by issuing date vs. settlement date to rule out a settlement/backfill artifact (settlement window = 14 days)\n- [ ] Run a top-20 payer/merchant concentration query for the anomaly window \u2014 confirm the enterprise contribution is many customers, not 2\u20133 outliers\n- [ ] Compare to March 2022 check TPV to test the seasonal/tax-season hypothesis (mid-March AP + 1099 cycle)\n- [ ] Check whether `regular_ach` or `two_day_ach` show any offsetting dip in the same window \u2014 if not, this is incremental volume, not rail substitution\n- [ ] Notify Head of Payments and Treasury: confirm float/clearing capacity for the next 1\u20132 weeks given the +56% check volume, and flag to Finance if the lift looks sustained past Apr 15\n\n---"
+  },
+  "regular_ach_2023-09-15_2023-09-19": {
+    "decomp": {
+      "product": "regular_ach",
+      "anomaly_window": {
+        "start": "2023-09-15",
+        "end": "2023-09-19",
+        "days": 5
+      },
+      "baseline_window": {
+        "start": "2023-08-16",
+        "end": "2023-09-14",
+        "days": 30
+      },
+      "summary": {
+        "baseline_daily_tpv": 2600792.63,
+        "anomaly_daily_tpv": 2389292.78,
+        "delta_daily_tpv": -211499.85,
+        "delta_pct": -0.0813,
+        "direction": "drop"
+      },
+      "by_dimension": {
+        "merchant_industry": [
+          {
+            "segment": "payroll_staffing",
+            "baseline_daily_tpv": 781076.02,
+            "anomaly_daily_tpv": 721796.33,
+            "delta_daily_tpv": -59279.69,
+            "pct_of_total_delta": 0.2803,
+            "direction": "drop"
+          },
+          {
+            "segment": "ecommerce",
+            "baseline_daily_tpv": 521771.1,
+            "anomaly_daily_tpv": 474419.37,
+            "delta_daily_tpv": -47351.73,
+            "pct_of_total_delta": 0.2239,
+            "direction": "drop"
+          },
+          {
+            "segment": "retail",
+            "baseline_daily_tpv": 519643.06,
+            "anomaly_daily_tpv": 478223.26,
+            "delta_daily_tpv": -41419.8,
+            "pct_of_total_delta": 0.1958,
+            "direction": "drop"
+          },
+          {
+            "segment": "professional_services",
+            "baseline_daily_tpv": 389269.92,
+            "anomaly_daily_tpv": 356769.66,
+            "delta_daily_tpv": -32500.26,
+            "pct_of_total_delta": 0.1537,
+            "direction": "drop"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 389032.52,
+            "anomaly_daily_tpv": 358084.16,
+            "delta_daily_tpv": -30948.36,
+            "pct_of_total_delta": 0.1463,
+            "direction": "drop"
+          }
+        ],
+        "merchant_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 1038704.54,
+            "anomaly_daily_tpv": 946861.87,
+            "delta_daily_tpv": -91842.68,
+            "pct_of_total_delta": 0.4342,
+            "direction": "drop"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 1041424.18,
+            "anomaly_daily_tpv": 962296.24,
+            "delta_daily_tpv": -79127.94,
+            "pct_of_total_delta": 0.3741,
+            "direction": "drop"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 520663.91,
+            "anomaly_daily_tpv": 480134.67,
+            "delta_daily_tpv": -40529.23,
+            "pct_of_total_delta": 0.1916,
+            "direction": "drop"
+          }
+        ],
+        "payer_industry": [
+          {
+            "segment": "retail_consumer",
+            "baseline_daily_tpv": 649929.71,
+            "anomaly_daily_tpv": 591173.4,
+            "delta_daily_tpv": -58756.31,
+            "pct_of_total_delta": 0.2778,
+            "direction": "drop"
+          },
+          {
+            "segment": "tech",
+            "baseline_daily_tpv": 521187.36,
+            "anomaly_daily_tpv": 477019.59,
+            "delta_daily_tpv": -44167.77,
+            "pct_of_total_delta": 0.2088,
+            "direction": "drop"
+          },
+          {
+            "segment": "manufacturing",
+            "baseline_daily_tpv": 520003.26,
+            "anomaly_daily_tpv": 479892.02,
+            "delta_daily_tpv": -40111.24,
+            "pct_of_total_delta": 0.1897,
+            "direction": "drop"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 519018.07,
+            "anomaly_daily_tpv": 483978.81,
+            "delta_daily_tpv": -35039.25,
+            "pct_of_total_delta": 0.1657,
+            "direction": "drop"
+          },
+          {
+            "segment": "other",
+            "baseline_daily_tpv": 390654.24,
+            "anomaly_daily_tpv": 357228.96,
+            "delta_daily_tpv": -33425.28,
+            "pct_of_total_delta": 0.158,
+            "direction": "drop"
+          }
+        ],
+        "payer_size": [
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 1041529.7,
+            "anomaly_daily_tpv": 957464.44,
+            "delta_daily_tpv": -84065.26,
+            "pct_of_total_delta": 0.3975,
+            "direction": "drop"
+          },
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 910058.79,
+            "anomaly_daily_tpv": 832478.46,
+            "delta_daily_tpv": -77580.32,
+            "pct_of_total_delta": 0.3668,
+            "direction": "drop"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 649204.14,
+            "anomaly_daily_tpv": 599349.88,
+            "delta_daily_tpv": -49854.26,
+            "pct_of_total_delta": 0.2357,
+            "direction": "drop"
+          }
+        ],
+        "payer_tenure_bucket": [
+          {
+            "segment": "growing_1_3yr",
+            "baseline_daily_tpv": 728450.73,
+            "anomaly_daily_tpv": 669691.38,
+            "delta_daily_tpv": -58759.35,
+            "pct_of_total_delta": 0.2778,
+            "direction": "drop"
+          },
+          {
+            "segment": "established_3_5yr",
+            "baseline_daily_tpv": 611234.23,
+            "anomaly_daily_tpv": 557761.25,
+            "delta_daily_tpv": -53472.98,
+            "pct_of_total_delta": 0.2528,
+            "direction": "drop"
+          },
+          {
+            "segment": "loyal_5plus_yr",
+            "baseline_daily_tpv": 545971.82,
+            "anomaly_daily_tpv": 503096.91,
+            "delta_daily_tpv": -42874.91,
+            "pct_of_total_delta": 0.2027,
+            "direction": "drop"
+          },
+          {
+            "segment": "early_4_12mo",
+            "baseline_daily_tpv": 520167.44,
+            "anomaly_daily_tpv": 479206.87,
+            "delta_daily_tpv": -40960.56,
+            "pct_of_total_delta": 0.1937,
+            "direction": "drop"
+          },
+          {
+            "segment": "new_0_3mo",
+            "baseline_daily_tpv": 194968.41,
+            "anomaly_daily_tpv": 179536.37,
+            "delta_daily_tpv": -15432.04,
+            "pct_of_total_delta": 0.073,
+            "direction": "drop"
+          }
+        ]
+      },
+      "top_interactions": [
+        {
+          "dimensions": "merchant_size \u00d7 payer_size",
+          "segment": "enterprise \u00d7 mid_market",
+          "baseline_daily_tpv": 415727.5,
+          "anomaly_daily_tpv": 380610.66,
+          "delta_daily_tpv": -35116.83,
+          "pct_of_total_delta": 0.166,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 merchant_size",
+          "segment": "payroll_staffing \u00d7 enterprise",
+          "baseline_daily_tpv": 312207.64,
+          "anomaly_daily_tpv": 286946.1,
+          "delta_daily_tpv": -25261.54,
+          "pct_of_total_delta": 0.1194,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "payer_industry \u00d7 payer_size",
+          "segment": "retail_consumer \u00d7 enterprise",
+          "baseline_daily_tpv": 227764.46,
+          "anomaly_daily_tpv": 203387.89,
+          "delta_daily_tpv": -24376.57,
+          "pct_of_total_delta": 0.1153,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_industry",
+          "segment": "enterprise \u00d7 retail_consumer",
+          "baseline_daily_tpv": 258886.46,
+          "anomaly_daily_tpv": 234572.37,
+          "delta_daily_tpv": -24314.09,
+          "pct_of_total_delta": 0.115,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_tenure_bucket",
+          "segment": "enterprise \u00d7 established_3_5yr",
+          "baseline_daily_tpv": 244444.07,
+          "anomaly_daily_tpv": 220326.56,
+          "delta_daily_tpv": -24117.5,
+          "pct_of_total_delta": 0.114,
+          "direction": "drop"
+        }
+      ]
+    },
+    "narrative": "---\n\n**TL;DR:** Regular ACH TPV dropped -8.1% (-$211.5K/day) from Sept 15\u201319 in a near-perfectly uniform pattern across all dimensions, pointing to a systemic cause \u2014 most likely an ACH rail/processing disruption or calendar effect rather than any segment-specific event.\n\n**Ranked Hypotheses:**\n\n1. **Systemic ACH processing disruption or calendar/banking-window effect** \u2014 Confidence: High\n   - Evidence: The drop is spread proportionally to baseline share across every dimension. Merchant size: enterprise 43.4%, mid_market 37.4%, smb 19.2% \u2014 matches baseline mix. Merchant industry: payroll_staffing 28%, ecommerce 22%, retail 20%, prof_services 15%, healthcare 15% \u2014 same shape as baseline. Payer industry, payer size, and tenure all show similarly proportional drops (e.g., tenure: growing 28%, established 25%, loyal 20%, early 19%, new 7%).\n   - Mechanism: A platform-wide event (Fed/ACH window holiday or processor incident, partial-day outage, originator file delay) suppresses volume uniformly because every customer routes through the same rail. The 5-day window spanning a weekend (Sept 16\u201317) plus the typical mid-month payroll lull amplifies the effect.\n\n2. **Mid-month payroll/biller cycle trough (seasonal)** \u2014 Confidence: Medium\n   - Evidence: payroll_staffing is the largest absolute contributor (-$59K/day, 28% of delta) but only because it is the largest baseline segment (30% of baseline TPV). The drop is *not* over-indexed there. Mid-month (15th\u201319th) often sits between the 1st/15th and end-of-month payroll surges that dominate ACH.\n   - Mechanism: Regular ACH (7-day settle) is heavily used for scheduled payroll and recurring B2B disbursements. A natural lull between cycles would depress volume uniformly across merchants and payers \u2014 consistent with the flat decomposition.\n\n3. **Broad macro/customer-spend pullback** \u2014 Confidence: Low\n   - Evidence: All payer industries (tech, retail_consumer, manufacturing, healthcare, other) dropped 16\u201328% of delta with no concentration. No tenure cohort over-indexed \u2014 even loyal_5plus_yr fell proportionally.\n   - Mechanism: A general slowdown would hit everyone, but a 5-day window is too short to attribute to macro conditions; this is more likely a coincident pattern than a real driver.\n\n4. **Targeted churn or fraud event** \u2014 Confidence: Low (ruled out)\n   - Evidence: No interaction cell exceeds 17% of total delta; top interaction (enterprise merchant \u00d7 mid_market payer) is just 16.6%. new_0_3mo cohort accounts for only 7% \u2014 no acquisition cliff or onboarding fraud signal.\n   - Mechanism: Targeted events produce concentrated deltas; that signature is absent here.\n\n**Most Diagnostic Dimension:** `merchant_size` (in combination with the flatness across *all* dimensions)\nThe decomposition's most informative feature is what it *doesn't* show: no dimension concentrates the delta. Merchant_size comes closest to a signal (enterprise 43%) but its share tracks baseline share, confirming proportionality rather than segment-specific stress.\n\n**Key Segment Findings:**\n- `merchant_industry` \u2014 **payroll_staffing**: 28.0% of delta (-$59.3K/day) \u2014 largest absolute, but proportional to baseline\n- `merchant_size` \u2014 **enterprise**: 43.4% of delta (-$91.8K/day) \u2014 proportional to its 40% baseline share\n- `payer_tenure_bucket` \u2014 **new_0_3mo**: only 7.3% of delta (-$15.4K/day) \u2014 no acquisition or new-payer red flag\n- `payer_industry` \u2014 **retail_consumer**: 27.8% of delta (-$58.8K/day) \u2014 proportional, not concentrated\n- Top interaction: `merchant_size \u00d7 payer_size` \u2014 **enterprise \u00d7 mid_market**: 16.6% of delta \u2014 no interaction cell dominates, reinforcing the systemic read\n\n**Recommended Next Steps:**\n- [ ] Pull ACH operator logs (NACHA/Fed processing windows) for Sept 15\u201319; check for file submission delays, return-batch spikes, or originator-side failures\n- [ ] Compare same-window daily TPV for `two_day_ach`, `one_day_ach`, and `check` \u2014 if other ACH products dropped in parallel, confirms rail-level cause; if only regular_ach, points to product-specific routing\n- [ ] Overlay this window against prior Septembers and the broader mid-month vs. end-of-month payroll cycle to quantify the seasonal baseline trough\n- [ ] Check transaction counts vs. TPV \u2014 is this a count drop (fewer payments) or AOV drop (smaller payments)? Distinguishes cycle effect from customer-behavior shift\n- [ ] Notify Payment Ops lead; hold off escalating to VP Finance until rail logs and cross-product comparison confirm or rule out an incident\n\n---"
+  },
+  "one_day_ach_2024-02-21_2024-02-25": {
+    "decomp": {
+      "product": "one_day_ach",
+      "anomaly_window": {
+        "start": "2024-02-21",
+        "end": "2024-02-25",
+        "days": 5
+      },
+      "baseline_window": {
+        "start": "2024-01-22",
+        "end": "2024-02-20",
+        "days": 30
+      },
+      "summary": {
+        "baseline_daily_tpv": 1087033.64,
+        "anomaly_daily_tpv": 1185880.28,
+        "delta_daily_tpv": 98846.64,
+        "delta_pct": 0.0909,
+        "direction": "spike"
+      },
+      "by_dimension": {
+        "merchant_industry": [
+          {
+            "segment": "ecommerce",
+            "baseline_daily_tpv": 435485.6,
+            "anomaly_daily_tpv": 574954.8,
+            "delta_daily_tpv": 139469.2,
+            "pct_of_total_delta": 1.411,
+            "direction": "spike"
+          },
+          {
+            "segment": "professional_services",
+            "baseline_daily_tpv": 271784.95,
+            "anomaly_daily_tpv": 252201.34,
+            "delta_daily_tpv": -19583.61,
+            "pct_of_total_delta": -0.1981,
+            "direction": "drop"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 216943.06,
+            "anomaly_daily_tpv": 205507.93,
+            "delta_daily_tpv": -11435.13,
+            "pct_of_total_delta": -0.1157,
+            "direction": "drop"
+          },
+          {
+            "segment": "retail",
+            "baseline_daily_tpv": 108735.37,
+            "anomaly_daily_tpv": 102827.67,
+            "delta_daily_tpv": -5907.7,
+            "pct_of_total_delta": -0.0598,
+            "direction": "drop"
+          },
+          {
+            "segment": "payroll_staffing",
+            "baseline_daily_tpv": 54084.66,
+            "anomaly_daily_tpv": 50388.53,
+            "delta_daily_tpv": -3696.13,
+            "pct_of_total_delta": -0.0374,
+            "direction": "drop"
+          }
+        ],
+        "merchant_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 598584.03,
+            "anomaly_daily_tpv": 731934.14,
+            "delta_daily_tpv": 133350.11,
+            "pct_of_total_delta": 1.3491,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 380050.74,
+            "anomaly_daily_tpv": 352678.72,
+            "delta_daily_tpv": -27372.02,
+            "pct_of_total_delta": -0.2769,
+            "direction": "drop"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 108398.87,
+            "anomaly_daily_tpv": 101267.42,
+            "delta_daily_tpv": -7131.45,
+            "pct_of_total_delta": -0.0721,
+            "direction": "drop"
+          }
+        ],
+        "payer_industry": [
+          {
+            "segment": "tech",
+            "baseline_daily_tpv": 325961.19,
+            "anomaly_daily_tpv": 353354.67,
+            "delta_daily_tpv": 27393.48,
+            "pct_of_total_delta": 0.2771,
+            "direction": "spike"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 218380.64,
+            "anomaly_daily_tpv": 243670.06,
+            "delta_daily_tpv": 25289.42,
+            "pct_of_total_delta": 0.2558,
+            "direction": "spike"
+          },
+          {
+            "segment": "retail_consumer",
+            "baseline_daily_tpv": 216577.85,
+            "anomaly_daily_tpv": 235650.98,
+            "delta_daily_tpv": 19073.13,
+            "pct_of_total_delta": 0.193,
+            "direction": "spike"
+          },
+          {
+            "segment": "manufacturing",
+            "baseline_daily_tpv": 162648.76,
+            "anomaly_daily_tpv": 177854.9,
+            "delta_daily_tpv": 15206.14,
+            "pct_of_total_delta": 0.1538,
+            "direction": "spike"
+          },
+          {
+            "segment": "other",
+            "baseline_daily_tpv": 163465.2,
+            "anomaly_daily_tpv": 175349.66,
+            "delta_daily_tpv": 11884.46,
+            "pct_of_total_delta": 0.1202,
+            "direction": "spike"
+          }
+        ],
+        "payer_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 542917.77,
+            "anomaly_daily_tpv": 588709.33,
+            "delta_daily_tpv": 45791.56,
+            "pct_of_total_delta": 0.4633,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 380619.07,
+            "anomaly_daily_tpv": 416134.58,
+            "delta_daily_tpv": 35515.51,
+            "pct_of_total_delta": 0.3593,
+            "direction": "spike"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 163496.8,
+            "anomaly_daily_tpv": 181036.37,
+            "delta_daily_tpv": 17539.57,
+            "pct_of_total_delta": 0.1774,
+            "direction": "spike"
+          }
+        ],
+        "payer_tenure_bucket": [
+          {
+            "segment": "early_4_12mo",
+            "baseline_daily_tpv": 303242.04,
+            "anomaly_daily_tpv": 334104.08,
+            "delta_daily_tpv": 30862.04,
+            "pct_of_total_delta": 0.3122,
+            "direction": "spike"
+          },
+          {
+            "segment": "established_3_5yr",
+            "baseline_daily_tpv": 178646.48,
+            "anomaly_daily_tpv": 199117.25,
+            "delta_daily_tpv": 20470.77,
+            "pct_of_total_delta": 0.2071,
+            "direction": "spike"
+          },
+          {
+            "segment": "growing_1_3yr",
+            "baseline_daily_tpv": 304954.05,
+            "anomaly_daily_tpv": 324447.5,
+            "delta_daily_tpv": 19493.46,
+            "pct_of_total_delta": 0.1972,
+            "direction": "spike"
+          },
+          {
+            "segment": "loyal_5plus_yr",
+            "baseline_daily_tpv": 142455.34,
+            "anomaly_daily_tpv": 156530.28,
+            "delta_daily_tpv": 14074.95,
+            "pct_of_total_delta": 0.1424,
+            "direction": "spike"
+          },
+          {
+            "segment": "new_0_3mo",
+            "baseline_daily_tpv": 157735.74,
+            "anomaly_daily_tpv": 171681.17,
+            "delta_daily_tpv": 13945.43,
+            "pct_of_total_delta": 0.1411,
+            "direction": "spike"
+          }
+        ]
+      },
+      "top_interactions": [
+        {
+          "dimensions": "merchant_industry \u00d7 merchant_size",
+          "segment": "ecommerce \u00d7 enterprise",
+          "baseline_daily_tpv": 239735.67,
+          "anomaly_daily_tpv": 395833.73,
+          "delta_daily_tpv": 156098.05,
+          "pct_of_total_delta": 1.5792,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_size",
+          "segment": "ecommerce \u00d7 enterprise",
+          "baseline_daily_tpv": 217238.12,
+          "anomaly_daily_tpv": 283099.44,
+          "delta_daily_tpv": 65861.31,
+          "pct_of_total_delta": 0.6663,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_size",
+          "segment": "enterprise \u00d7 enterprise",
+          "baseline_daily_tpv": 299774.69,
+          "anomaly_daily_tpv": 362825.2,
+          "delta_daily_tpv": 63050.5,
+          "pct_of_total_delta": 0.6379,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_tenure_bucket",
+          "segment": "enterprise \u00d7 early_4_12mo",
+          "baseline_daily_tpv": 166389.24,
+          "anomaly_daily_tpv": 206844.72,
+          "delta_daily_tpv": 40455.48,
+          "pct_of_total_delta": 0.4093,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_tenure_bucket",
+          "segment": "ecommerce \u00d7 early_4_12mo",
+          "baseline_daily_tpv": 121198.38,
+          "anomaly_daily_tpv": 161390.69,
+          "delta_daily_tpv": 40192.31,
+          "pct_of_total_delta": 0.4066,
+          "direction": "spike"
+        }
+      ]
+    },
+    "narrative": "---\n\n**TL;DR:** one_day_ach TPV spiked +9.1% (+$98.8K/day) driven almost entirely by enterprise ecommerce merchants, with the ecommerce \u00d7 enterprise cell alone explaining 158% of the net delta \u2014 strongly suggesting a concentrated merchant-level adoption or campaign event rather than a systemic shift.\n\n**Ranked Hypotheses:**\n\n1. **Enterprise ecommerce merchant adoption / campaign surge on one_day_ach** \u2014 Confidence: High\n   - Evidence: ecommerce contributes +141% of total delta (+$139K/day) while every other merchant industry is *negative*. Enterprise merchants contribute +135% (+$133K/day) while mid_market (-28%) and smb (-7%) declined. The ecommerce \u00d7 enterprise interaction alone is +$156K/day (158% of delta) \u2014 larger than the total anomaly itself.\n   - Mechanism: One or a small handful of large ecommerce merchants ramped one_day_ach usage (new merchant going live, promotional volume push, or migration from regular_ach/two_day_ach to expedited rail). The negative contribution from other segments suggests baseline noise/seasonality, not a broad lift.\n\n2. **Payer-side mix shift toward expedited settlement, broad-based** \u2014 Confidence: Low-Medium\n   - Evidence: All payer industries spiked positively and relatively proportionally (tech +28%, healthcare +26%, retail_consumer +19%, manufacturing +15%, other +12%); all payer sizes spiked; all tenure buckets spiked. This *looks* systemic on the payer side.\n   - Mechanism: Could indicate payers electing faster settlement broadly. However, this pattern is more plausibly an artifact of the dominant ecommerce-enterprise merchants serving a diverse payer base \u2014 not an independent payer-driven cause.\n\n3. **Cohort onboarding wave in early_4_12mo payers at enterprise merchants** \u2014 Confidence: Medium\n   - Evidence: early_4_12mo tenure leads payer_tenure deltas (+31%, +$30.9K/day). The enterprise \u00d7 early_4_12mo interaction is +$40.5K/day (41% of delta), and ecommerce \u00d7 early_4_12mo is +$40.2K/day (41%).\n   - Mechanism: Payers onboarded 4\u201312 months ago to a large ecommerce enterprise merchant are now hitting steady-state volume on one_day_ach \u2014 consistent with a Q3/Q4 2023 onboarding cohort maturing.\n\n4. **Cannibalization from slower ACH rails** \u2014 Confidence: Low\n   - Evidence: Not directly visible in this report, but the targeted enterprise-ecommerce concentration is consistent with a merchant flipping default rail from regular_ach/two_day_ach to one_day_ach.\n   - Mechanism: Need to check whether regular_ach or two_day_ach show a corresponding *drop* in ecommerce \u00d7 enterprise over the same window.\n\n**Most Diagnostic Dimension:** `merchant_industry \u00d7 merchant_size`\nThe interaction cell ecommerce \u00d7 enterprise accounts for 158% of the total delta \u2014 single-handedly larger than the anomaly \u2014 while no other merchant segment contributed positively. This pinpoints the anomaly to a narrow merchant cohort, not a platform-wide event.\n\n**Key Segment Findings:**\n- `merchant_industry` \u2014 **ecommerce**: +141% of total delta (+$139K/day); all other industries negative\n- `merchant_size` \u2014 **enterprise**: +135% of total delta (+$133K/day); mid_market -28%, smb -7%\n- `payer_tenure_bucket` \u2014 **early_4_12mo**: +31% of total delta (+$30.9K/day), leading tenure bucket\n- Top interaction: `merchant_industry \u00d7 merchant_size` \u2014 **ecommerce \u00d7 enterprise**: +$156K/day (158% of delta) \u2014 the entire anomaly lives here\n- Secondary interaction: `merchant_size \u00d7 payer_tenure_bucket` \u2014 **enterprise \u00d7 early_4_12mo**: +$40.5K/day (41% of delta)\n\n**Recommended Next Steps:**\n- [ ] Drill into the merchant_id grain within ecommerce \u00d7 enterprise for 2024-02-21 to 2024-02-25; identify the top 3\u20135 merchants by delta and confirm whether one merchant dominates.\n- [ ] Pull regular_ach and two_day_ach decompositions for the same window filtered to ecommerce \u00d7 enterprise to test the rail-migration hypothesis (expect offsetting drops).\n- [ ] Check sales/CS notes and merchant configuration change logs for any one_day_ach enablement, pricing change, or go-live event in mid-February for large ecommerce accounts.\n- [ ] Validate the early_4_12mo payer cohort: are these payers concentrated under 1\u20132 ecommerce merchants (consistent with merchant-led onboarding) or distributed?\n- [ ] Rule out fraud: confirm transaction counts vs. avg ticket size for the ecommerce \u00d7 enterprise cell \u2014 a large jump in avg ticket with flat count could indicate a few anomalous high-value transfers.\n- [ ] Notify Head of Payments and the Enterprise Ecommerce account team; if this is a sustained ramp, update the one_day_ach forecast.\n\n---"
+  },
+  "one_day_ach_2024-11-25_2024-11-29": {
+    "decomp": {
+      "product": "one_day_ach",
+      "anomaly_window": {
+        "start": "2024-11-25",
+        "end": "2024-11-29",
+        "days": 5
+      },
+      "baseline_window": {
+        "start": "2024-10-26",
+        "end": "2024-11-24",
+        "days": 30
+      },
+      "summary": {
+        "baseline_daily_tpv": 1940871.53,
+        "anomaly_daily_tpv": 2757359.83,
+        "delta_daily_tpv": 816488.3,
+        "delta_pct": 0.4207,
+        "direction": "spike"
+      },
+      "by_dimension": {
+        "merchant_industry": [
+          {
+            "segment": "ecommerce",
+            "baseline_daily_tpv": 774048.71,
+            "anomaly_daily_tpv": 1356273.24,
+            "delta_daily_tpv": 582224.53,
+            "pct_of_total_delta": 0.7131,
+            "direction": "spike"
+          },
+          {
+            "segment": "professional_services",
+            "baseline_daily_tpv": 486808.52,
+            "anomaly_daily_tpv": 586558.46,
+            "delta_daily_tpv": 99749.94,
+            "pct_of_total_delta": 0.1222,
+            "direction": "spike"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 387667.48,
+            "anomaly_daily_tpv": 464445.9,
+            "delta_daily_tpv": 76778.41,
+            "pct_of_total_delta": 0.094,
+            "direction": "spike"
+          },
+          {
+            "segment": "retail",
+            "baseline_daily_tpv": 195703.39,
+            "anomaly_daily_tpv": 232836.73,
+            "delta_daily_tpv": 37133.35,
+            "pct_of_total_delta": 0.0455,
+            "direction": "spike"
+          },
+          {
+            "segment": "payroll_staffing",
+            "baseline_daily_tpv": 96643.43,
+            "anomaly_daily_tpv": 117245.49,
+            "delta_daily_tpv": 20602.07,
+            "pct_of_total_delta": 0.0252,
+            "direction": "spike"
+          }
+        ],
+        "merchant_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 1070555.7,
+            "anomaly_daily_tpv": 1530621.29,
+            "delta_daily_tpv": 460065.59,
+            "pct_of_total_delta": 0.5635,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 676074.29,
+            "anomaly_daily_tpv": 957504.97,
+            "delta_daily_tpv": 281430.68,
+            "pct_of_total_delta": 0.3447,
+            "direction": "spike"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 194241.53,
+            "anomaly_daily_tpv": 269233.57,
+            "delta_daily_tpv": 74992.03,
+            "pct_of_total_delta": 0.0918,
+            "direction": "spike"
+          }
+        ],
+        "payer_industry": [
+          {
+            "segment": "tech",
+            "baseline_daily_tpv": 582287.88,
+            "anomaly_daily_tpv": 816782.36,
+            "delta_daily_tpv": 234494.49,
+            "pct_of_total_delta": 0.2872,
+            "direction": "spike"
+          },
+          {
+            "segment": "retail_consumer",
+            "baseline_daily_tpv": 388418.61,
+            "anomaly_daily_tpv": 556454.58,
+            "delta_daily_tpv": 168035.97,
+            "pct_of_total_delta": 0.2058,
+            "direction": "spike"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 388420.4,
+            "anomaly_daily_tpv": 546945.85,
+            "delta_daily_tpv": 158525.45,
+            "pct_of_total_delta": 0.1942,
+            "direction": "spike"
+          },
+          {
+            "segment": "manufacturing",
+            "baseline_daily_tpv": 291094.18,
+            "anomaly_daily_tpv": 421989.63,
+            "delta_daily_tpv": 130895.45,
+            "pct_of_total_delta": 0.1603,
+            "direction": "spike"
+          },
+          {
+            "segment": "other",
+            "baseline_daily_tpv": 290650.46,
+            "anomaly_daily_tpv": 415187.41,
+            "delta_daily_tpv": 124536.95,
+            "pct_of_total_delta": 0.1525,
+            "direction": "spike"
+          }
+        ],
+        "payer_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 972376.6,
+            "anomaly_daily_tpv": 1388121.74,
+            "delta_daily_tpv": 415745.14,
+            "pct_of_total_delta": 0.5092,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 675843.99,
+            "anomaly_daily_tpv": 952034.93,
+            "delta_daily_tpv": 276190.94,
+            "pct_of_total_delta": 0.3383,
+            "direction": "spike"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 292650.95,
+            "anomaly_daily_tpv": 417203.16,
+            "delta_daily_tpv": 124552.21,
+            "pct_of_total_delta": 0.1525,
+            "direction": "spike"
+          }
+        ],
+        "payer_tenure_bucket": [
+          {
+            "segment": "early_4_12mo",
+            "baseline_daily_tpv": 550529.46,
+            "anomaly_daily_tpv": 776530.22,
+            "delta_daily_tpv": 226000.75,
+            "pct_of_total_delta": 0.2768,
+            "direction": "spike"
+          },
+          {
+            "segment": "growing_1_3yr",
+            "baseline_daily_tpv": 539685.24,
+            "anomaly_daily_tpv": 765557.93,
+            "delta_daily_tpv": 225872.69,
+            "pct_of_total_delta": 0.2766,
+            "direction": "spike"
+          },
+          {
+            "segment": "established_3_5yr",
+            "baseline_daily_tpv": 317355.38,
+            "anomaly_daily_tpv": 460183.38,
+            "delta_daily_tpv": 142828.0,
+            "pct_of_total_delta": 0.1749,
+            "direction": "spike"
+          },
+          {
+            "segment": "new_0_3mo",
+            "baseline_daily_tpv": 281278.39,
+            "anomaly_daily_tpv": 394809.29,
+            "delta_daily_tpv": 113530.91,
+            "pct_of_total_delta": 0.139,
+            "direction": "spike"
+          },
+          {
+            "segment": "loyal_5plus_yr",
+            "baseline_daily_tpv": 252023.06,
+            "anomaly_daily_tpv": 360279.01,
+            "delta_daily_tpv": 108255.95,
+            "pct_of_total_delta": 0.1326,
+            "direction": "spike"
+          }
+        ]
+      },
+      "top_interactions": [
+        {
+          "dimensions": "merchant_industry \u00d7 merchant_size",
+          "segment": "ecommerce \u00d7 enterprise",
+          "baseline_daily_tpv": 427719.0,
+          "anomaly_daily_tpv": 762415.68,
+          "delta_daily_tpv": 334696.68,
+          "pct_of_total_delta": 0.4099,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_size",
+          "segment": "ecommerce \u00d7 enterprise",
+          "baseline_daily_tpv": 389140.29,
+          "anomaly_daily_tpv": 684591.31,
+          "delta_daily_tpv": 295451.02,
+          "pct_of_total_delta": 0.3619,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_size",
+          "segment": "enterprise \u00d7 enterprise",
+          "baseline_daily_tpv": 536170.38,
+          "anomaly_daily_tpv": 777625.9,
+          "delta_daily_tpv": 241455.52,
+          "pct_of_total_delta": 0.2957,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_industry",
+          "segment": "ecommerce \u00d7 tech",
+          "baseline_daily_tpv": 232998.14,
+          "anomaly_daily_tpv": 397854.9,
+          "delta_daily_tpv": 164856.76,
+          "pct_of_total_delta": 0.2019,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_tenure_bucket",
+          "segment": "ecommerce \u00d7 growing_1_3yr",
+          "baseline_daily_tpv": 214030.17,
+          "anomaly_daily_tpv": 375497.42,
+          "delta_daily_tpv": 161467.25,
+          "pct_of_total_delta": 0.1978,
+          "direction": "spike"
+        }
+      ]
+    },
+    "narrative": "---\n\n**TL;DR:** one_day_ach TPV spiked +42.1% (+$816K/day) over 2024-11-25 to 11-29, driven overwhelmingly by enterprise ecommerce merchants \u2014 consistent with a Black Friday / Cyber Week settlement surge requiring expedited ACH.\n\n**Ranked Hypotheses:**\n\n1. **Black Friday / Cyber Week ecommerce surge on expedited rails** \u2014 Confidence: High\n   - Evidence: Anomaly window (Nov 25\u201329) brackets Black Friday (Nov 29). Ecommerce alone drives 71.3% of the delta (+$582K/day); within that, ecommerce \u00d7 enterprise merchant accounts for 41.0% of total delta (+$335K/day). Enterprise merchants = 56.4% of delta; enterprise payers = 50.9%. Payer industries lean toward tech (28.7%) and retail_consumer (20.6%) \u2014 exactly the buyer mix funding ecommerce inventory/marketplace payouts.\n   - Mechanism: Large ecommerce platforms shift to one_day_ach during peak holiday week to accelerate merchant/seller payouts and time-sensitive supplier disbursements. Enterprise-on-enterprise flows dominate because large marketplaces process the bulk of holiday GMV.\n\n2. **Product-mix shift: customers upgrading from regular_ach to one_day_ach for peak-week urgency** \u2014 Confidence: Medium\n   - Evidence: The spike is concentrated in a fast-growing product (+70% YoY) and skews toward established cohorts (growing_1_3yr 27.7%, established_3_5yr 17.5%, loyal_5plus_yr 13.3% \u2014 together ~58%), not just new customers. New_0_3mo is only 13.9%, arguing against a pure onboarding wave.\n   - Mechanism: Existing customers temporarily route holiday-week payments to the expedited rail; this would show as a corresponding dip or flat trend in regular_ach over the same window.\n\n3. **Concentrated large-merchant behavior (1\u20132 ecommerce enterprise accounts)** \u2014 Confidence: Medium\n   - Evidence: The ecommerce \u00d7 enterprise merchant cell at 41% of total delta is unusually concentrated for an interaction term; ecommerce \u00d7 tech payer (20.2%) and ecommerce \u00d7 growing_1_3yr (19.8%) further suggest the surge funnels through a small set of marketplace operators receiving payments from tech-sector buyers.\n   - Mechanism: A single large marketplace or platform customer's holiday payout cycle could account for a disproportionate share of the lift. Worth confirming this is broad-based rather than 1\u20132 accounts.\n\n4. **Fraud or anomalous account activity using expedited rail** \u2014 Confidence: Low\n   - Evidence: New_0_3mo tenure is the *smallest* contributor (13.9%); the spike is concentrated in established enterprise relationships, not new accounts. Distribution does not match fraud-via-new-accounts pattern.\n   - Mechanism: Mostly ruled out, but worth a quick screen given the magnitude on a newer product.\n\n**Most Diagnostic Dimension:** `merchant_industry`\nEcommerce captures 71% of the entire delta \u2014 far above its 40% baseline share \u2014 and the top five interaction cells all involve ecommerce. This single dimension converts an ambiguous spike into a clearly-categorized holiday/peak-week event.\n\n**Key Segment Findings:**\n- `merchant_industry` \u2014 **ecommerce**: 71.3% of total delta (+$582K/day)\n- `merchant_size` \u2014 **enterprise**: 56.4% of total delta (+$460K/day)\n- `payer_size` \u2014 **enterprise**: 50.9% of total delta (+$416K/day)\n- `payer_tenure_bucket` \u2014 **early_4_12mo + growing_1_3yr**: 55.3% combined; spike is not new-account driven (new_0_3mo only 13.9%)\n- Top interaction: `merchant_industry \u00d7 merchant_size` \u2014 **ecommerce \u00d7 enterprise**: 41.0% of total delta (+$335K/day) \u2014 the single dominant cell\n\n**Recommended Next Steps:**\n- [ ] Pull top 10 ecommerce enterprise merchants by one_day_ach volume during Nov 25\u201329; confirm broad-based vs. concentrated in 1\u20132 accounts (marketplace IDs).\n- [ ] Cross-check regular_ach TPV for the same window \u2014 a corresponding flat/declining trend confirms product-mix shift; growth in both confirms net-new holiday volume.\n- [ ] Compare against Nov 2023 Black Friday week (if data available) to validate seasonality and quantify YoY one_day_ach holiday lift.\n- [ ] Run a fraud/risk screen on any new_0_3mo accounts that contributed disproportionately within ecommerce, even though aggregate signal is low.\n- [ ] Notify Head of Payments and Capacity/Ops: confirm rail capacity and funding cover Cyber Monday/Tuesday tail; flag to Finance that this is expected seasonality, not a forecast miss.\n\n---"
+  },
+  "one_day_ach_2025-04-02_2025-04-03": {
+    "decomp": {
+      "product": "one_day_ach",
+      "anomaly_window": {
+        "start": "2025-04-02",
+        "end": "2025-04-03",
+        "days": 2
+      },
+      "baseline_window": {
+        "start": "2025-03-03",
+        "end": "2025-04-01",
+        "days": 30
+      },
+      "summary": {
+        "baseline_daily_tpv": 2302709.42,
+        "anomaly_daily_tpv": 1143113.5,
+        "delta_daily_tpv": -1159595.93,
+        "delta_pct": -0.5036,
+        "direction": "drop"
+      },
+      "by_dimension": {
+        "merchant_industry": [
+          {
+            "segment": "ecommerce",
+            "baseline_daily_tpv": 921381.79,
+            "anomaly_daily_tpv": 459077.3,
+            "delta_daily_tpv": -462304.49,
+            "pct_of_total_delta": 0.3987,
+            "direction": "drop"
+          },
+          {
+            "segment": "professional_services",
+            "baseline_daily_tpv": 574863.14,
+            "anomaly_daily_tpv": 283444.96,
+            "delta_daily_tpv": -291418.18,
+            "pct_of_total_delta": 0.2513,
+            "direction": "drop"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 460986.73,
+            "anomaly_daily_tpv": 228344.86,
+            "delta_daily_tpv": -232641.86,
+            "pct_of_total_delta": 0.2006,
+            "direction": "drop"
+          },
+          {
+            "segment": "retail",
+            "baseline_daily_tpv": 230526.05,
+            "anomaly_daily_tpv": 115322.66,
+            "delta_daily_tpv": -115203.39,
+            "pct_of_total_delta": 0.0993,
+            "direction": "drop"
+          },
+          {
+            "segment": "payroll_staffing",
+            "baseline_daily_tpv": 114951.72,
+            "anomaly_daily_tpv": 56923.71,
+            "delta_daily_tpv": -58028.01,
+            "pct_of_total_delta": 0.05,
+            "direction": "drop"
+          }
+        ],
+        "merchant_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 1265493.88,
+            "anomaly_daily_tpv": 623579.91,
+            "delta_daily_tpv": -641913.97,
+            "pct_of_total_delta": 0.5536,
+            "direction": "drop"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 805924.79,
+            "anomaly_daily_tpv": 402617.4,
+            "delta_daily_tpv": -403307.39,
+            "pct_of_total_delta": 0.3478,
+            "direction": "drop"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 231290.75,
+            "anomaly_daily_tpv": 116916.19,
+            "delta_daily_tpv": -114374.56,
+            "pct_of_total_delta": 0.0986,
+            "direction": "drop"
+          }
+        ],
+        "payer_industry": [
+          {
+            "segment": "tech",
+            "baseline_daily_tpv": 694693.36,
+            "anomaly_daily_tpv": 337662.54,
+            "delta_daily_tpv": -357030.82,
+            "pct_of_total_delta": 0.3079,
+            "direction": "drop"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 458895.64,
+            "anomaly_daily_tpv": 227991.9,
+            "delta_daily_tpv": -230903.74,
+            "pct_of_total_delta": 0.1991,
+            "direction": "drop"
+          },
+          {
+            "segment": "retail_consumer",
+            "baseline_daily_tpv": 460380.13,
+            "anomaly_daily_tpv": 233298.86,
+            "delta_daily_tpv": -227081.27,
+            "pct_of_total_delta": 0.1958,
+            "direction": "drop"
+          },
+          {
+            "segment": "manufacturing",
+            "baseline_daily_tpv": 346419.93,
+            "anomaly_daily_tpv": 171299.35,
+            "delta_daily_tpv": -175120.58,
+            "pct_of_total_delta": 0.151,
+            "direction": "drop"
+          },
+          {
+            "segment": "other",
+            "baseline_daily_tpv": 342320.37,
+            "anomaly_daily_tpv": 172860.86,
+            "delta_daily_tpv": -169459.51,
+            "pct_of_total_delta": 0.1461,
+            "direction": "drop"
+          }
+        ],
+        "payer_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 1149524.57,
+            "anomaly_daily_tpv": 566058.11,
+            "delta_daily_tpv": -583466.45,
+            "pct_of_total_delta": 0.5032,
+            "direction": "drop"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 808267.85,
+            "anomaly_daily_tpv": 404681.22,
+            "delta_daily_tpv": -403586.64,
+            "pct_of_total_delta": 0.348,
+            "direction": "drop"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 344917.0,
+            "anomaly_daily_tpv": 172374.17,
+            "delta_daily_tpv": -172542.84,
+            "pct_of_total_delta": 0.1488,
+            "direction": "drop"
+          }
+        ],
+        "payer_tenure_bucket": [
+          {
+            "segment": "early_4_12mo",
+            "baseline_daily_tpv": 641708.41,
+            "anomaly_daily_tpv": 311094.02,
+            "delta_daily_tpv": -330614.4,
+            "pct_of_total_delta": 0.2851,
+            "direction": "drop"
+          },
+          {
+            "segment": "growing_1_3yr",
+            "baseline_daily_tpv": 647869.68,
+            "anomaly_daily_tpv": 325159.6,
+            "delta_daily_tpv": -322710.08,
+            "pct_of_total_delta": 0.2783,
+            "direction": "drop"
+          },
+          {
+            "segment": "established_3_5yr",
+            "baseline_daily_tpv": 378958.67,
+            "anomaly_daily_tpv": 194405.52,
+            "delta_daily_tpv": -184553.15,
+            "pct_of_total_delta": 0.1592,
+            "direction": "drop"
+          },
+          {
+            "segment": "new_0_3mo",
+            "baseline_daily_tpv": 333538.6,
+            "anomaly_daily_tpv": 165672.67,
+            "delta_daily_tpv": -167865.93,
+            "pct_of_total_delta": 0.1448,
+            "direction": "drop"
+          },
+          {
+            "segment": "loyal_5plus_yr",
+            "baseline_daily_tpv": 300634.05,
+            "anomaly_daily_tpv": 146781.68,
+            "delta_daily_tpv": -153852.37,
+            "pct_of_total_delta": 0.1327,
+            "direction": "drop"
+          }
+        ]
+      },
+      "top_interactions": [
+        {
+          "dimensions": "merchant_size \u00d7 payer_size",
+          "segment": "enterprise \u00d7 enterprise",
+          "baseline_daily_tpv": 630472.37,
+          "anomaly_daily_tpv": 306181.38,
+          "delta_daily_tpv": -324291.0,
+          "pct_of_total_delta": 0.2797,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 merchant_size",
+          "segment": "ecommerce \u00d7 enterprise",
+          "baseline_daily_tpv": 505751.41,
+          "anomaly_daily_tpv": 249109.42,
+          "delta_daily_tpv": -256641.99,
+          "pct_of_total_delta": 0.2213,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_size",
+          "segment": "ecommerce \u00d7 enterprise",
+          "baseline_daily_tpv": 458950.56,
+          "anomaly_daily_tpv": 228176.38,
+          "delta_daily_tpv": -230774.18,
+          "pct_of_total_delta": 0.199,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_industry",
+          "segment": "enterprise \u00d7 tech",
+          "baseline_daily_tpv": 381674.31,
+          "anomaly_daily_tpv": 183951.52,
+          "delta_daily_tpv": -197722.8,
+          "pct_of_total_delta": 0.1705,
+          "direction": "drop"
+        },
+        {
+          "dimensions": "payer_industry \u00d7 payer_size",
+          "segment": "tech \u00d7 enterprise",
+          "baseline_daily_tpv": 349217.16,
+          "anomaly_daily_tpv": 168600.85,
+          "delta_daily_tpv": -180616.32,
+          "pct_of_total_delta": 0.1558,
+          "direction": "drop"
+        }
+      ]
+    },
+    "narrative": "---\n\n**TL;DR:** one_day_ach TPV dropped -50.4% (-$1.16M/day) over a 2-day window with losses spread proportionally across every dimension, strongly indicating a systemic rail or platform incident rather than a segment-specific cause.\n\n**Ranked Hypotheses:**\n\n1. **Payment rail / platform incident affecting one_day_ach** \u2014 Confidence: High\n   - Evidence: Every segment dropped by ~50% in near-perfect proportion to its baseline share. Merchant industries: ecommerce 39.9%, prof_services 25.1%, healthcare 20.1%, retail 9.9%, payroll 5.0% \u2014 these mirror baseline shares (40%, 25%, 20%, 10%, 5%). Same uniformity in payer_industry, payer_size, and tenure. No single segment exceeds 40% of delta on any dimension except enterprise merchant_size (55%, which still tracks its 55% baseline share).\n   - Mechanism: A processing outage, rail-level rejection, or feature flag affecting one_day_ach submissions would proportionally suppress volume across all customer cohorts. The 2-day window also fits a discrete incident envelope.\n\n2. **Bank/ODFI partner outage specific to next-day ACH window** \u2014 Confidence: Medium\n   - Evidence: Drop is isolated to one_day_ach (per this report) and uniform across payers/merchants. Tenure distribution is flat (new through loyal all down ~50%), ruling out cohort behavior.\n   - Mechanism: If the originating bank or a specific ACH cutoff/window failed on Apr 2\u20133, all one_day_ach attempts would either fall back to slower rails or fail outright, hitting all customers equally.\n\n3. **Calendar / holiday or Fed processing day effect** \u2014 Confidence: Low-Medium\n   - Evidence: April 2\u20133, 2025 are a Wed/Thu \u2014 not a federal holiday, but could coincide with a Fed maintenance window or NACHA processing anomaly. Uniform distribution is consistent.\n   - Mechanism: If next-day settlement was unavailable, customers may have shifted to two_day_ach or regular_ach (worth verifying in sibling product reports).\n\n4. **Top-of-funnel pricing/config change on one_day_ach** \u2014 Confidence: Low\n   - Evidence: Uniformity fits, but a 50% drop in 2 days from a pricing change is unusually sharp and would normally show cohort skew (new payers most price-sensitive). New_0_3mo dropped 14.5%, in line with its 14.5% baseline share \u2014 no skew.\n   - Mechanism: A fee hike or eligibility tightening would dampen volume but rarely halve it within 48 hours uniformly.\n\n**Most Diagnostic Dimension:** `payer_tenure_bucket`\nThe tenure distribution is the strongest diagnostic here: every tenure bucket (new through loyal_5plus_yr) dropped by ~50%, with shares of delta within 1\u20132 points of baseline shares. This rules out churn, acquisition slowdown, and cohort-specific behavior \u2014 leaving a platform/rail-level cause.\n\n**Key Segment Findings:**\n- `merchant_size` \u2014 **enterprise**: 55.4% of total delta (-$642K/day) \u2014 tracks 55% baseline share, not over-indexed\n- `payer_size` \u2014 **enterprise**: 50.3% of total delta (-$583K/day) \u2014 proportional to baseline\n- `payer_tenure` \u2014 **all 5 buckets**: each within 1\u20132 pts of baseline share; no cohort skew\n- `merchant_industry` \u2014 **ecommerce**: 39.9% of delta (-$462K/day), matching its 40% baseline share\n- Top interaction: `merchant_size \u00d7 payer_size` \u2014 **enterprise \u00d7 enterprise**: -$324K/day (28% of delta), but this is exactly what a proportional drop predicts given its baseline weight \u2014 no intersection effect\n\n**Recommended Next Steps:**\n- [ ] Check one_day_ach submission/rejection logs and ODFI partner status for 2025-04-02 to 2025-04-03 (look for elevated reject codes, timeout rates, or auth failures)\n- [ ] Pull product engineering change log and feature flag history for one_day_ach in the 48 hours preceding Apr 2\n- [ ] Cross-check two_day_ach and regular_ach TPV on the same dates \u2014 a compensating spike would confirm rail-fallback behavior; a parallel drop would point to a broader platform issue\n- [ ] Verify NACHA / Fed processing calendar and any bank partner maintenance notifications for Apr 2\u20133\n- [ ] Rule out reporting/ETL gap: confirm payment records for Apr 2\u20133 are fully ingested and not under-counted\n- [ ] Notify Head of Payments and on-call Payments Eng; if confirmed as an incident, draft customer comms for affected enterprise merchants\n\n---"
+  },
+  "check_2025-12-22_2025-12-31": {
+    "decomp": {
+      "product": "check",
+      "anomaly_window": {
+        "start": "2025-12-22",
+        "end": "2025-12-31",
+        "days": 10
+      },
+      "baseline_window": {
+        "start": "2025-11-22",
+        "end": "2025-12-21",
+        "days": 30
+      },
+      "summary": {
+        "baseline_daily_tpv": 815618.76,
+        "anomaly_daily_tpv": 971650.6,
+        "delta_daily_tpv": 156031.84,
+        "delta_pct": 0.1913,
+        "direction": "spike"
+      },
+      "by_dimension": {
+        "merchant_industry": [
+          {
+            "segment": "professional_services",
+            "baseline_daily_tpv": 286952.71,
+            "anomaly_daily_tpv": 337793.43,
+            "delta_daily_tpv": 50840.72,
+            "pct_of_total_delta": 0.3258,
+            "direction": "spike"
+          },
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 242948.65,
+            "anomaly_daily_tpv": 292840.19,
+            "delta_daily_tpv": 49891.54,
+            "pct_of_total_delta": 0.3198,
+            "direction": "spike"
+          },
+          {
+            "segment": "retail",
+            "baseline_daily_tpv": 122004.57,
+            "anomaly_daily_tpv": 147304.27,
+            "delta_daily_tpv": 25299.7,
+            "pct_of_total_delta": 0.1621,
+            "direction": "spike"
+          },
+          {
+            "segment": "payroll_staffing",
+            "baseline_daily_tpv": 81712.99,
+            "anomaly_daily_tpv": 97433.1,
+            "delta_daily_tpv": 15720.11,
+            "pct_of_total_delta": 0.1007,
+            "direction": "spike"
+          },
+          {
+            "segment": "ecommerce",
+            "baseline_daily_tpv": 81999.84,
+            "anomaly_daily_tpv": 96279.61,
+            "delta_daily_tpv": 14279.77,
+            "pct_of_total_delta": 0.0915,
+            "direction": "spike"
+          }
+        ],
+        "merchant_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 407579.13,
+            "anomaly_daily_tpv": 549156.69,
+            "delta_daily_tpv": 141577.56,
+            "pct_of_total_delta": 0.9074,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 285979.72,
+            "anomaly_daily_tpv": 295766.81,
+            "delta_daily_tpv": 9787.09,
+            "pct_of_total_delta": 0.0627,
+            "direction": "spike"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 122059.91,
+            "anomaly_daily_tpv": 126727.1,
+            "delta_daily_tpv": 4667.18,
+            "pct_of_total_delta": 0.0299,
+            "direction": "spike"
+          }
+        ],
+        "payer_industry": [
+          {
+            "segment": "healthcare",
+            "baseline_daily_tpv": 245546.02,
+            "anomaly_daily_tpv": 288549.05,
+            "delta_daily_tpv": 43003.04,
+            "pct_of_total_delta": 0.2756,
+            "direction": "spike"
+          },
+          {
+            "segment": "manufacturing",
+            "baseline_daily_tpv": 203333.43,
+            "anomaly_daily_tpv": 244623.96,
+            "delta_daily_tpv": 41290.54,
+            "pct_of_total_delta": 0.2646,
+            "direction": "spike"
+          },
+          {
+            "segment": "retail_consumer",
+            "baseline_daily_tpv": 162167.32,
+            "anomaly_daily_tpv": 195247.38,
+            "delta_daily_tpv": 33080.05,
+            "pct_of_total_delta": 0.212,
+            "direction": "spike"
+          },
+          {
+            "segment": "other",
+            "baseline_daily_tpv": 122935.45,
+            "anomaly_daily_tpv": 145994.04,
+            "delta_daily_tpv": 23058.59,
+            "pct_of_total_delta": 0.1478,
+            "direction": "spike"
+          },
+          {
+            "segment": "tech",
+            "baseline_daily_tpv": 81636.54,
+            "anomaly_daily_tpv": 97236.17,
+            "delta_daily_tpv": 15599.63,
+            "pct_of_total_delta": 0.1,
+            "direction": "spike"
+          }
+        ],
+        "payer_size": [
+          {
+            "segment": "enterprise",
+            "baseline_daily_tpv": 407610.74,
+            "anomaly_daily_tpv": 485326.96,
+            "delta_daily_tpv": 77716.22,
+            "pct_of_total_delta": 0.4981,
+            "direction": "spike"
+          },
+          {
+            "segment": "mid_market",
+            "baseline_daily_tpv": 286046.83,
+            "anomaly_daily_tpv": 340075.37,
+            "delta_daily_tpv": 54028.54,
+            "pct_of_total_delta": 0.3463,
+            "direction": "spike"
+          },
+          {
+            "segment": "smb",
+            "baseline_daily_tpv": 121961.2,
+            "anomaly_daily_tpv": 146248.27,
+            "delta_daily_tpv": 24287.07,
+            "pct_of_total_delta": 0.1557,
+            "direction": "spike"
+          }
+        ],
+        "payer_tenure_bucket": [
+          {
+            "segment": "established_3_5yr",
+            "baseline_daily_tpv": 241893.93,
+            "anomaly_daily_tpv": 287565.58,
+            "delta_daily_tpv": 45671.64,
+            "pct_of_total_delta": 0.2927,
+            "direction": "spike"
+          },
+          {
+            "segment": "loyal_5plus_yr",
+            "baseline_daily_tpv": 227551.04,
+            "anomaly_daily_tpv": 272620.0,
+            "delta_daily_tpv": 45068.96,
+            "pct_of_total_delta": 0.2888,
+            "direction": "spike"
+          },
+          {
+            "segment": "growing_1_3yr",
+            "baseline_daily_tpv": 204293.03,
+            "anomaly_daily_tpv": 242431.29,
+            "delta_daily_tpv": 38138.25,
+            "pct_of_total_delta": 0.2444,
+            "direction": "spike"
+          },
+          {
+            "segment": "early_4_12mo",
+            "baseline_daily_tpv": 105354.88,
+            "anomaly_daily_tpv": 125314.78,
+            "delta_daily_tpv": 19959.89,
+            "pct_of_total_delta": 0.1279,
+            "direction": "spike"
+          },
+          {
+            "segment": "new_0_3mo",
+            "baseline_daily_tpv": 36525.88,
+            "anomaly_daily_tpv": 43718.96,
+            "delta_daily_tpv": 7193.09,
+            "pct_of_total_delta": 0.0461,
+            "direction": "spike"
+          }
+        ]
+      },
+      "top_interactions": [
+        {
+          "dimensions": "merchant_size \u00d7 payer_size",
+          "segment": "enterprise \u00d7 enterprise",
+          "baseline_daily_tpv": 203641.24,
+          "anomaly_daily_tpv": 273636.65,
+          "delta_daily_tpv": 69995.4,
+          "pct_of_total_delta": 0.4486,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 merchant_size",
+          "segment": "professional_services \u00d7 enterprise",
+          "baseline_daily_tpv": 143313.24,
+          "anomaly_daily_tpv": 191495.33,
+          "delta_daily_tpv": 48182.09,
+          "pct_of_total_delta": 0.3088,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_tenure_bucket",
+          "segment": "enterprise \u00d7 established_3_5yr",
+          "baseline_daily_tpv": 120949.34,
+          "anomaly_daily_tpv": 162168.71,
+          "delta_daily_tpv": 41219.37,
+          "pct_of_total_delta": 0.2642,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_size \u00d7 payer_industry",
+          "segment": "enterprise \u00d7 healthcare",
+          "baseline_daily_tpv": 122886.0,
+          "anomaly_daily_tpv": 163477.91,
+          "delta_daily_tpv": 40591.91,
+          "pct_of_total_delta": 0.2602,
+          "direction": "spike"
+        },
+        {
+          "dimensions": "merchant_industry \u00d7 payer_size",
+          "segment": "healthcare \u00d7 enterprise",
+          "baseline_daily_tpv": 121121.08,
+          "anomaly_daily_tpv": 146238.15,
+          "delta_daily_tpv": 25117.07,
+          "pct_of_total_delta": 0.161,
+          "direction": "spike"
+        }
+      ]
+    },
+    "narrative": "---\n\n**TL;DR:** Check TPV spiked +19.1% (+$156K/day) over the Dec 22\u201331 window, driven overwhelmingly by enterprise merchants receiving enterprise payer checks \u2014 consistent with a year-end B2B payment / fiscal-close push rather than a systemic anomaly.\n\n**Ranked Hypotheses:**\n\n1. **Year-end enterprise B2B payment surge (fiscal close / tax-year cutoff)** \u2014 Confidence: High\n   - Evidence: Enterprise merchants account for 90.7% of the delta (+$141.6K/day); enterprise\u00d7enterprise interaction alone is 44.9% of total delta (+$70.0K/day). Spike spans the last 10 days of December. Established (29.3%) and loyal (28.9%) tenure buckets dominate \u2014 these are the cohorts that transact via check at year-end. Industry distribution is broad (prof services 32.6%, healthcare 32.0%, retail 16.2%) \u2014 not a single-vertical event.\n   - Mechanism: Large enterprises rush to clear AP/AR before fiscal/tax year-end, and check remains the preferred instrument for high-value, contract-driven enterprise B2B settlements (vendor true-ups, bonuses, year-end invoices). The concentration in enterprise\u00d7enterprise with mature tenure is the classic signature.\n\n2. **Seasonal payroll/bonus and professional-services billing cycle** \u2014 Confidence: Medium\n   - Evidence: professional_services \u00d7 enterprise is the #2 interaction at 30.9% (+$48.2K/day); payroll_staffing also spiked (+19% within its segment, +$15.7K/day). Healthcare merchant (+$49.9K/day) aligns with year-end provider settlements.\n   - Mechanism: Annual bonus disbursements, retainer true-ups, and year-end professional-services invoicing typically settle by paper check for enterprise clients with established check workflows.\n\n3. **Pull-forward from check decline reversing temporarily** \u2014 Confidence: Low-Medium\n   - Evidence: Check is a -8% YoY declining product, yet jumped +19% in 10 days. The spike skews to mature tenure (loyal_5plus_yr +28.9%), the cohort least likely to have migrated to ACH.\n   - Mechanism: Legacy enterprise payers who still use check for year-end controls produce a seasonal bump that masks the underlying secular decline. Expect reversion in January.\n\n4. **Targeted onboarding or fraud via new accounts** \u2014 Confidence: Low (effectively ruled out)\n   - Evidence: new_0_3mo contributes only 4.6% of delta; spike is concentrated in established/loyal tenure. No fraud signature.\n   - Mechanism: N/A \u2014 distribution is inconsistent with fraud.\n\n**Most Diagnostic Dimension:** `merchant_size`\nEnterprise merchants explain 90.7% of the total delta while mid-market (6.3%) and SMB (3.0%) are essentially flat. This near-monopoly on the delta \u2014 combined with the enterprise\u00d7enterprise interaction at 44.9% \u2014 pinpoints the spike to large-corporate B2B check flows.\n\n**Key Segment Findings:**\n- `merchant_size` \u2014 **enterprise**: 90.7% of total delta (+$141.6K/day)\n- `payer_size` \u2014 **enterprise**: 49.8% of total delta (+$77.7K/day); mid_market 34.6%\n- `payer_tenure_bucket` \u2014 **established_3_5yr + loyal_5plus_yr**: combined 58.2% (+$90.7K/day); new/early cohorts only 17.4%\n- `merchant_industry` \u2014 **professional_services (32.6%) + healthcare (32.0%)**: jointly 64.6% of delta, but spike is broad across all 5 industries\n- Top interaction: `merchant_size \u00d7 payer_size` \u2014 **enterprise \u00d7 enterprise**: 44.9% of delta (+$70.0K/day) \u2014 the anomaly is concentrated at the large-corporate intersection.\n\n**Recommended Next Steps:**\n- [ ] Pull top-20 enterprise merchant check receipts for Dec 22\u201331 vs. same window 2024 to confirm year-over-year seasonality (rule out a one-off anomaly).\n- [ ] Compare against Dec 2024 and Dec 2023 check TPV \u2014 if a similar Dec 22\u201331 spike exists historically, classify as seasonal and update baseline detection to exclude fiscal year-end.\n- [ ] Query AP system / check issuance logs for enterprise\u00d7enterprise payers to identify the top contributing payer-merchant pairs and confirm payment memos (bonus, year-end invoice, true-up).\n- [ ] Verify ACH products (regular/two_day/one_day) did NOT show a corresponding drop \u2014 would rule out a channel-shift hypothesis.\n- [ ] Notify Head of Payments and Finance that January TPV is expected to revert; do not extrapolate this run-rate into Q1 forecasts.\n\n---"
+  }
+}
