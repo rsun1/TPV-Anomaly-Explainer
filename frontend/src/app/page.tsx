@@ -46,7 +46,8 @@ export default function Page() {
       .catch(() => { setErrorMsg('Could not reach the backend. Is it running on port 8000?'); setLoadingEvents(false) })
   }, [])
 
-  const filtered = filter === 'all' ? events : events.filter(e => e.product === filter)
+  const filtered = (filter === 'all' ? events : events.filter(e => e.product === filter))
+    .slice().sort((a, b) => b.start.localeCompare(a.start))
   const busy     = status === 'decomposing' || status === 'narrating'
 
   function handleSelect(ev: AnomalyEvent) {

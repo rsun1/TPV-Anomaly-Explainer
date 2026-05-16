@@ -7,7 +7,7 @@ import { PRODUCT_COLORS, PRODUCT_LABELS, ALL_PRODUCTS } from '@/lib/constants'
 
 const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
 
-interface DataPoint    { date: string; tpv: number }
+interface DataPoint     { date: string; tpv: number }
 interface AnomalyWindow { start: string; end: string }
 interface TimeseriesResponse {
   product: string
@@ -15,11 +15,45 @@ interface TimeseriesResponse {
   anomaly_windows: AnomalyWindow[]
 }
 
+type TimeRange = '3m' | '6m' | '1y' | 'all'
+
+const TIME_RANGES: { key: TimeRange; label: string }[] = [
+  { key: '3m',  label: '3M'  },
+  { key: '6m',  label: '6M'  },
+  { key: '1y',  label: '1Y'  },
+  { key: 'all', label: 'All' },
+]
+
+function filterByRange(series: DataPoint[], range: TimeRange): DataPoint[] {
+  if (range === 'all' || !series.length) return series
+  const lastDate = new Date(series[series.length - 1].date + 'T00:00:00')
+  const cutoff   = new Date(lastDate)
+  if (range === '3m') cutoff.setMonth(cutoff.getMonth() - 3)
+  if (range === '6m') cutoff.setMonth(cutoff.getMonth() - 6)
+  if (range === '1y') cutoff.setFullYear(cutoff.getFullYear() - 1)
+  const cutoffStr = cutoff.toISOString().slice(0, 10)
+  return series.filter(d => d.date >= cutoffStr)
+}
+
+function filterWindows(windows: AnomalyWindow[], series: DataPoint[]): AnomalyWindow[] {
+  if (!series.length) return []
+  const first = series[0].date
+  const last  = series[series.length - 1].date
+  return windows.filter(w => w.end >= first && w.start <= last)
+}
+
+function fmtLabel(dateStr: string) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  })
+}
+
 export default function TrendView() {
-  const [product, setProduct]   = useState('regular_ach')
-  const [data, setData]         = useState<TimeseriesResponse | null>(null)
-  const [loading, setLoading]   = useState(false)
-  const [error, setError]       = useState('')
+  const [product,   setProduct]   = useState('regular_ach')
+  const [timeRange, setTimeRange] = useState<TimeRange>('all')
+  const [data,      setData]      = useState<TimeseriesResponse | null>(null)
+  const [loading,   setLoading]   = useState(false)
+  const [error,     setError]     = useState('')
 
   useEffect(() => {
     setLoading(true)
@@ -34,6 +68,13 @@ export default function TrendView() {
       .finally(() => setLoading(false))
   }, [product])
 
+  const filteredSeries  = data ? filterByRange(data.series, timeRange)         : []
+  const filteredWindows = data ? filterWindows(data.anomaly_windows, filteredSeries) : []
+
+  const rangeLabel = filteredSeries.length
+    ? `${fmtLabel(filteredSeries[0].date)} – ${fmtLabel(filteredSeries[filteredSeries.length - 1].date)}`
+    : ''
+
   return (
     <div className="space-y-5">
       {/* Product selector */}
@@ -44,7 +85,7 @@ export default function TrendView() {
             <div className="relative">
               <select
                 value={product}
-                onChange={e => setProduct(e.target.value)}
+                onChange={e => { setProduct(e.target.value) }}
                 disabled={loading}
                 className="appearance-none bg-slate-50 border border-slate-200 rounded-lg
                            px-3 py-2.5 pr-8 text-sm text-slate-800 font-medium
@@ -58,7 +99,6 @@ export default function TrendView() {
             </div>
           </div>
 
-          {/* Product color swatch + legend */}
           <div className="flex gap-3 mt-5">
             {ALL_PRODUCTS.map(p => (
               <button
@@ -88,11 +128,30 @@ export default function TrendView() {
 
       {/* Chart */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-        <div className="flex items-baseline gap-2 mb-1">
-          <h2 className="text-base font-semibold text-slate-800">
-            Daily TPV — {PRODUCT_LABELS[product]}
-          </h2>
-          <span className="text-xs text-slate-400">complete rows only, Jan 2022 – May 2026</span>
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <div className="flex items-baseline gap-2 min-w-0">
+            <h2 className="text-base font-semibold text-slate-800 truncate">
+              Daily TPV — {PRODUCT_LABELS[product]}
+            </h2>
+            <span className="text-xs text-slate-400 whitespace-nowrap">{rangeLabel}</span>
+          </div>
+
+          {/* Time range presets */}
+          <div className="flex gap-1 bg-slate-100 rounded-lg p-1 flex-shrink-0">
+            {TIME_RANGES.map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setTimeRange(key)}
+                className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+                  timeRange === key
+                    ? 'bg-white text-slate-800 shadow-sm'
+                    : 'text-slate-500 hover:text-slate-700'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {loading && (
@@ -110,22 +169,21 @@ export default function TrendView() {
           <>
             <TrendChart
               product={product}
-              series={data.series}
-              anomalyWindows={data.anomaly_windows}
+              series={filteredSeries}
+              anomalyWindows={filteredWindows}
             />
 
-            {/* Anomaly legend */}
-            {data.anomaly_windows.length > 0 && (
-              <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-x-6 gap-y-1">
+            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap gap-x-6 gap-y-1">
+              {filteredWindows.length > 0 && (
                 <div className="flex items-center gap-2 text-xs text-slate-500">
                   <span className="inline-block w-3 h-3 rounded-sm bg-red-400 opacity-50" />
-                  Anomaly window ({data.anomaly_windows.length} event{data.anomaly_windows.length > 1 ? 's' : ''} flagged)
+                  Anomaly window ({filteredWindows.length} event{filteredWindows.length > 1 ? 's' : ''} flagged)
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  Hover over the chart to see daily values
-                </div>
+              )}
+              <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                Drag the handles at the bottom to zoom in on a specific period
               </div>
-            )}
+            </div>
           </>
         )}
       </div>

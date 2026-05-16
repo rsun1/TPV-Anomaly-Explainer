@@ -2,7 +2,7 @@
 
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
-  ReferenceArea, ResponsiveContainer,
+  ReferenceArea, ResponsiveContainer, Brush,
 } from 'recharts'
 import { PRODUCT_COLORS } from '@/lib/constants'
 
@@ -20,16 +20,18 @@ interface Props {
   anomalyWindows: AnomalyWindow[]
 }
 
-// Generate quarterly x-axis ticks from the series date range
 function buildTicks(series: DataPoint[]): string[] {
   if (!series.length) return []
-  const first = new Date(series[0].date)
-  const last  = new Date(series[series.length - 1].date)
+  const first    = new Date(series[0].date + 'T00:00:00')
+  const last     = new Date(series[series.length - 1].date + 'T00:00:00')
+  const diffDays = (last.getTime() - first.getTime()) / 86_400_000
+  // Monthly ticks for ≤1yr view, quarterly for longer
+  const stepMonths = diffDays > 365 ? 3 : 1
   const ticks: string[] = []
-  const d = new Date(first.getFullYear(), Math.floor(first.getMonth() / 3) * 3, 1)
+  const d = new Date(first.getFullYear(), Math.floor(first.getMonth() / stepMonths) * stepMonths, 1)
   while (d <= last) {
     ticks.push(d.toISOString().slice(0, 10))
-    d.setMonth(d.getMonth() + 3)
+    d.setMonth(d.getMonth() + stepMonths)
   }
   return ticks
 }
@@ -63,7 +65,7 @@ export default function TrendChart({ product, series, anomalyWindows }: Props) {
   const ticks = buildTicks(series)
 
   return (
-    <ResponsiveContainer width="100%" height={380}>
+    <ResponsiveContainer width="100%" height={400}>
       <AreaChart data={series} margin={{ top: 10, right: 20, left: 10, bottom: 0 }}>
         <defs>
           <linearGradient id="tpvGradient" x1="0" y1="0" x2="0" y2="1">
@@ -92,7 +94,6 @@ export default function TrendChart({ product, series, anomalyWindows }: Props) {
 
         <Tooltip content={<CustomTooltip />} />
 
-        {/* Anomaly bands — no labels, just visual markers */}
         {anomalyWindows.map((w, i) => (
           <ReferenceArea
             key={i}
@@ -115,6 +116,16 @@ export default function TrendChart({ product, series, anomalyWindows }: Props) {
           dot={false}
           activeDot={{ r: 3, fill: color, stroke: '#fff', strokeWidth: 2 }}
           isAnimationActive={false}
+        />
+
+        {/* Drag-to-zoom brush — shows a mini overview of the series */}
+        <Brush
+          dataKey="date"
+          height={28}
+          stroke="#e2e8f0"
+          fill="#f8fafc"
+          travellerWidth={6}
+          tickFormatter={fmtTick}
         />
       </AreaChart>
     </ResponsiveContainer>
