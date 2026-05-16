@@ -1,9 +1,12 @@
 export interface AnomalyEvent {
-  id: number
+  id: string
   label: string
   start: string
   end: string
+  product: string
   products: string[]
+  peak_z: number
+  direction: 'spike' | 'drop' | 'unknown'
 }
 
 export interface SegmentRow {
