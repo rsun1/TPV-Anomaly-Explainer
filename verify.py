@@ -4,10 +4,14 @@ Confirms row counts, date range, TPV scale, settlement logic,
 and that all 6 anomaly events are loaded.
 """
 
+import os
+from pathlib import Path
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
-engine = create_engine("postgresql://postgres:olist123@localhost:5432/transactions")
+load_dotenv(Path(__file__).parent / ".env")
+engine = create_engine(os.environ["DATABASE_URL"])
 
 def run(label, sql):
     df = pd.read_sql(text(sql), engine)

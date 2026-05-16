@@ -1,7 +1,11 @@
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 import pandas as pd
 
-engine = create_engine("postgresql://postgres:olist123@localhost:5432/transactions")
+load_dotenv(Path(__file__).parent.parent / ".env")
+engine = create_engine(os.environ["DATABASE_URL"])
 
 DIMENSIONS = [
     "merchant_industry",

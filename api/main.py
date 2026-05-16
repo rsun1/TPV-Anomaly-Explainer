@@ -30,7 +30,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from sqlalchemy import create_engine, text
 
-DB_URL = "postgresql://postgres:olist123@localhost:5432/transactions"
+DB_URL = os.environ["DATABASE_URL"]
 _engine = None
 
 def _get_engine():
@@ -41,7 +41,7 @@ def _get_engine():
 
 from decomposition.segment_decomposer import decompose
 from narrative.llm_synthesizer import _SYSTEM_PROMPT, _build_user_message, MODEL
-from events import EVENTS
+from detection.prophet_model import load_or_detect_all, group_flagged_days
 
 app = FastAPI(title="Anomaly Explainer API", version="1.0.0")
 
@@ -56,16 +56,35 @@ app.add_middleware(
 
 # ── Endpoints ──────────────────────────────────────────────────────────────────
 
+def _get_windows() -> list[dict]:
+    """Flat list of all detected anomaly windows across all products, date-sorted."""
+    all_results = load_or_detect_all()
+    items = []
+    for product, results in all_results.items():
+        for i, w in enumerate(group_flagged_days(results)):
+            items.append({
+                "id":        f"{product}_{i}",
+                "product":   product,
+                "products":  [product],
+                "label":     f"{product}  {w['start']} → {w['end']}",
+                "start":     str(w["start"]),
+                "end":       str(w["end"]),
+                "peak_z":    round(w["peak_z"], 1),
+                "direction": w["direction"],
+            })
+    return sorted(items, key=lambda x: x["start"])
+
+
 @app.get("/events")
 def get_events():
-    return EVENTS
+    return _get_windows()
 
 
 @app.get("/timeseries/{product}")
 def get_timeseries(product: str):
     """
     Daily aggregate TPV for one product (complete rows only).
-    Also returns the anomaly windows that affect this product so the
+    Also returns detected anomaly windows for this product so the
     frontend can draw bands — no labels, no explanations, just markers.
     """
     engine = _get_engine()
@@ -82,15 +101,17 @@ def get_timeseries(product: str):
         engine,
         params={"product": product},
     )
-    anomaly_windows = [
-        {"start": e["start"], "end": e["end"]}
-        for e in EVENTS
-        if product in e["products"]
-    ]
+    all_results = load_or_detect_all()
+    product_windows = []
+    if product in all_results:
+        product_windows = [
+            {"start": str(w["start"]), "end": str(w["end"])}
+            for w in group_flagged_days(all_results[product])
+        ]
     return {
-        "product": product,
-        "series": df.to_dict(orient="records"),
-        "anomaly_windows": anomaly_windows,
+        "product":        product,
+        "series":         df.to_dict(orient="records"),
+        "anomaly_windows": product_windows,
     }
 
 

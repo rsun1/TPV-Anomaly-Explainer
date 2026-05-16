@@ -3,15 +3,20 @@ Payment TPV Explorer dashboard.
 Run with: streamlit run dashboard.py
 """
 
+import os
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 from datetime import date, timedelta
 
+load_dotenv(Path(__file__).parent / ".env")
+
 st.set_page_config(page_title="Payment TPV Explorer", layout="wide")
 
-DB_URL  = "postgresql://postgres:olist123@localhost:5432/transactions"
+DB_URL  = os.environ["DATABASE_URL"]
 TODAY   = date(2026, 5, 10)
 
 PRODUCT_COLORS = {

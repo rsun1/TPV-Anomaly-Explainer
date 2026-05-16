@@ -225,3 +225,71 @@ Two holiday-period FP patterns survive, neither addressed by prior-scale tuning:
 2. **Dec 27–31 gap.** Christmas covers Dec 24–26 (`upper_window=1`); New Year covers Dec 31–Jan 2 (`lower_window=-1`). Dec 27–30 is covered by **no holiday regressor**, and the smooth Fourier yearly seasonality cannot model a sharp week-long office-shutdown cliff.
 
 The obvious fix — widening the Christmas window to span Dec 24–31 — is **deliberately not applied**, because Dec 22–31 overlaps the real seeded event `year_end_enterprise_rush_2025`. Teaching the model that the whole year-end week is "expected" risks absorbing the genuine event and dropping recall. The holiday-period FPs are a genuine accuracy/recall trade-off, not a tuning oversight.
+
+---
+
+## Re-run after DB password rotation — 2026-05-16
+
+Triggered by: Docker container recreated with new password (`testdata`), synthetic data regenerated from scratch. Same random seed (42), same model configuration. Purpose: confirm results are stable across data regeneration.
+
+### scorer.py
+
+No changes. All metrics match the last documented state exactly.
+
+| Metric | Previous final | This run |
+|---|---|---|
+| Detection recall | 92% (11/12) | 92% (11/12) |
+| FP windows | 64 | 64 |
+| Attribution accuracy | 82% (9/11) | 82% (9/11) |
+
+FP breakdown by product (first time documented at this model state):
+
+| Product | FP Windows |
+|---|---|
+| check | 15 |
+| regular_ach | 19 |
+| two_day_ach | 15 |
+| one_day_ach | 15 |
+| **Total** | **64** |
+
+Full detection results confirmed:
+
+| Event | Product | Result | Lag | z-score |
+|---|---|---|---|---|
+| svb_collapse_bank_flight_2023 | check | PASS | 0d | 5.2 |
+| svb_collapse_bank_flight_2023 | regular_ach | PASS | 0d | 4.0 |
+| nacha_processing_delay_2023 | regular_ach | PASS | 0d | 7.9 |
+| nacha_processing_delay_2023 | two_day_ach | PASS | 0d | 7.7 |
+| ecommerce_enterprise_fraud_ring_2024 | one_day_ach | **FAIL** | not detected | — |
+| cyber_monday_surge_2024 | one_day_ach | PASS | 0d | 5.7 |
+| cyber_monday_surge_2024 | regular_ach | PASS | 0d | 4.7 |
+| cyber_monday_surge_2024 | two_day_ach | PASS | 0d | 5.1 |
+| platform_outage_one_day_ach_2025 | one_day_ach | PASS | 0d | 8.3 |
+| year_end_enterprise_rush_2025 | check | PASS | 0d | 4.3 |
+| year_end_enterprise_rush_2025 | regular_ach | PASS | 0d | 4.8 |
+| year_end_enterprise_rush_2025 | two_day_ach | PASS | 0d | 3.2 |
+
+### narrative_scorer.py
+
+Narratives served from cache (unchanged). One judge score shifted due to LLM non-determinism.
+
+| Event | Product | Hyp | Evid | Dim | Cal | Act | Avg |
+|---|---|---|---|---|---|---|---|
+| svb_collapse_bank_flight_2023 | check | 1 | 5 | **3** | 2 | 4 | **3.0** |
+| nacha_processing_delay_2023 | regular_ach | 5 | 5 | 5 | 5 | 4 | 4.8 |
+| ecommerce_enterprise_fraud_ring_2024 | one_day_ach | 1 | 5 | 5 | 2 | 4 | 3.4 |
+| cyber_monday_surge_2024 | one_day_ach | 5 | 5 | 4 | 4 | 4 | 4.4 |
+| platform_outage_one_day_ach_2025 | one_day_ach | 5 | 5 | 4 | 5 | 5 | 4.8 |
+| year_end_enterprise_rush_2025 | check | 5 | 5 | 5 | 5 | 4 | 4.8 |
+
+**Overall average: 4.2 / 5.0** (prev 4.1)
+
+| Criterion | Prev | This run |
+|---|---|---|
+| hypothesis_accuracy | 3.7 | 3.7 |
+| evidence_specificity | 5.0 | 5.0 |
+| dimension_identification | 4.0 | **4.3** |
+| confidence_calibration | 3.8 | 3.8 |
+| actionability | 4.2 | 4.2 |
+
+**Change:** `svb_collapse_bank_flight_2023 / check` dimension_identification rose from 1 → 3. The narrative is cached and unchanged; the judge granted partial credit this run (the narrative identifies `payer_industry` as the top dimension, which the judge now accepts as partially correct — payer_industry concentration was a real signal even if the root cause was misattributed). This is LLM-judge variance, not a model improvement.

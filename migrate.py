@@ -1,9 +1,14 @@
+import os
 import sqlite3
+from pathlib import Path
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
+load_dotenv(Path(__file__).parent / ".env")
+
 sqlite_path = r"C:\Users\sunru\Documents\Anomaly Explainer\olist.sqlite"
-pg_engine = create_engine("postgresql://postgres:olist123@localhost:5432/transactions")
+pg_engine = create_engine(os.environ["DATABASE_URL"])
 
 sqlite_conn = sqlite3.connect(sqlite_path)
 

@@ -14,11 +14,16 @@ See data/DATA_DESCRIPTION.md for full design rationale.
 """
 
 import io
+import os
+from pathlib import Path
 import numpy as np
 import pandas as pd
 from datetime import date, timedelta
+from dotenv import load_dotenv
 from itertools import product as cartesian
 from sqlalchemy import create_engine, text
+
+load_dotenv(Path(__file__).parent.parent / ".env")
 
 np.random.seed(42)
 
@@ -27,7 +32,7 @@ np.random.seed(42)
 START_DATE = date(2022, 1, 1)
 END_DATE   = date(2026, 5, 9)   # today; partial-settlement window applies near this edge
 TODAY      = END_DATE
-DB_URL     = "postgresql://postgres:olist123@localhost:5432/transactions"
+DB_URL     = os.environ["DATABASE_URL"]
 
 # ── Products ──────────────────────────────────────────────────────────────────
 # base_tpv     : daily $ volume at Jan 1 2022 (before growth/seasonality)

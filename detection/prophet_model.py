@@ -15,19 +15,26 @@ The anomaly_ground_truth table is never read here — detection is fully blind
 to injected events. That table is only used by eval/scorer.py.
 """
 
+import json
 import logging
+import os
 import warnings
 import numpy as np
 import pandas as pd
 from datetime import date, timedelta
+from pathlib import Path
+from dotenv import load_dotenv
 from prophet import Prophet
 from sqlalchemy import create_engine, text
+
+load_dotenv(Path(__file__).parent.parent / ".env")
 
 logging.getLogger("prophet").setLevel(logging.WARNING)
 logging.getLogger("cmdstanpy").setLevel(logging.WARNING)
 warnings.filterwarnings("ignore")
 
-DB_URL   = "postgresql://postgres:olist123@localhost:5432/transactions"
+DB_URL     = os.environ["DATABASE_URL"]
+CACHE_PATH = Path(__file__).parent / "detection_cache.json"
 PRODUCTS = ["regular_ach", "check", "two_day_ach", "one_day_ach"]
 
 
@@ -122,17 +129,31 @@ def build_model(holidays_df: pd.DataFrame) -> Prophet:
       changepoint_prior_scale = 0.05 default; flexible enough to track YoY growth
                                      without over-fitting to anomaly weeks
     """
-    return Prophet(
+    model = Prophet(
         growth="linear",
         yearly_seasonality=True,
         weekly_seasonality=True,
         daily_seasonality=False,
         holidays=holidays_df,
         interval_width=0.95,
+        seasonality_mode="multiplicative",
         changepoint_prior_scale=0.05,
-        seasonality_prior_scale=10.0,
-        holidays_prior_scale=10.0,
+        # Lowered from 10.0 to the Prophet default (5.0): multiplicative mode
+        # expresses seasonality as a fraction of the trend, so prior_scale=10
+        # allows ±10x swings — far too flexible, causing seasonality overfitting
+        # and inflated false positives.
+        seasonality_prior_scale=5.0,
+        # Lowered from 10.0 to 5.0 for the same reason: a barely-regularized
+        # holiday effect could swing to an extreme negative multiplier, which
+        # combined with a weekend effect drove predicted TPV below zero on
+        # New Year's Day when it fell on a Sunday.
+        holidays_prior_scale=5.0,
     )
+    # B2B payments have strong month-end AP billing cycle spikes that neither
+    # weekly nor yearly seasonality captures. fourier_order=2 fits a smooth
+    # month-end ramp without overfitting mid-month noise.
+    model.add_seasonality(name="monthly", period=30.5, fourier_order=2)
+    return model
 
 
 # ── Detection ─────────────────────────────────────────────────────────────────
@@ -168,16 +189,30 @@ def detect(
         "yhat_upper": "upper",
     })
 
+    # TPV cannot be negative. In multiplicative mode a strong holiday effect
+    # stacked on a weekend effect can push the prediction below zero (e.g.
+    # New Year's Day on a Sunday) — a negative prediction is always a model
+    # artifact, so floor predictions and interval bounds at 0.
+    for col in ["predicted", "lower", "upper"]:
+        results[col] = results[col].clip(lower=0)
+
     results["residual"]     = results["actual"] - results["predicted"]
     # Divide by |predicted| so the sign stays meaningful even when Prophet
     # produces negative warm-up predictions in the first ~60 days.
     results["residual_pct"] = results["residual"] / results["predicted"].abs().clip(lower=1.0)
 
-    # Rolling 30-day std of residuals for z-score.
+    # Rolling 90-day std of residuals for z-score.
     # Using a trailing window (not centered) so each day's z-score is only
     # informed by prior history — mimics real-time detection.
-    rolling_std            = results["residual"].rolling(30, min_periods=10).std()
-    results["z_score"]     = results["residual"] / rolling_std.clip(lower=1.0)
+    rolling_std        = results["residual"].rolling(90, min_periods=30).std()
+    results["z_score"] = results["residual"] / rolling_std.clip(lower=1.0)
+
+    # Dual-gate anomaly flag: must breach Prophet's 95% prediction interval AND
+    # exceed the z-score threshold. The interval gate eliminates days that score
+    # z > 2.5 purely due to a tight rolling-std window but are still within the
+    # model's expected uncertainty band.
+    outside_interval          = (results["actual"] < results["lower"]) | (results["actual"] > results["upper"])
+    results["is_anomaly"]     = outside_interval & (results["z_score"].abs() > z_threshold)
 
     results["is_anomaly"]        = results["z_score"].abs() > z_threshold
     results["anomaly_direction"] = None
@@ -210,6 +245,86 @@ def detect_all(
     return output
 
 
+# ── Cache helpers ────────────────────────────────────────────────────────────
+
+def _results_to_dict(df: pd.DataFrame) -> list[dict]:
+    out = df.copy()
+    out["ds"] = out["ds"].astype(str)
+    records = out[["ds", "actual", "predicted", "z_score", "is_anomaly", "anomaly_direction"]].to_dict(orient="records")
+    return [{k: (None if isinstance(v, float) and v != v else v) for k, v in r.items()} for r in records]
+
+
+def _dict_to_results(records: list[dict]) -> pd.DataFrame:
+    df = pd.DataFrame(records)
+    df["ds"] = pd.to_datetime(df["ds"])
+    return df
+
+
+def load_or_detect_all(fresh: bool = False) -> dict[str, pd.DataFrame]:
+    """
+    Load cached detection results or refit Prophet for all products.
+    Cache lives at detection/detection_cache.json; pass fresh=True to refit.
+    """
+    if not fresh and CACHE_PATH.exists():
+        with open(CACHE_PATH) as f:
+            raw = json.load(f)
+        return {product: _dict_to_results(records) for product, records in raw.items()}
+
+    print("Running Prophet detection (first run ~1 min) ...")
+    engine      = create_engine(DB_URL)
+    holidays_df = build_holidays_df()
+    all_results: dict[str, pd.DataFrame] = {}
+    for product in PRODUCTS:
+        print(f"  Fitting {product} ...", end=" ", flush=True)
+        results, _ = detect(product, engine, holidays_df)
+        n = results["is_anomaly"].sum()
+        print(f"{n} anomalous days")
+        all_results[product] = results
+
+    cache = {p: _results_to_dict(df) for p, df in all_results.items()}
+    with open(CACHE_PATH, "w") as f:
+        json.dump(cache, f, indent=2)
+    print(f"Cached to {CACHE_PATH.name}\n")
+    return all_results
+
+
+# ── Window grouping ───────────────────────────────────────────────────────────
+
+def group_flagged_days(
+    results: pd.DataFrame,
+    gap_days: int = 3,
+    min_days: int = 2,
+) -> list[dict]:
+    """
+    Collapse consecutive anomalous days into windows.
+    Windows with fewer than min_days flagged days are dropped unless peak_z >= 3.0.
+    Returns list of dicts with start, end, peak_z, n_days, direction.
+    """
+    flagged = results[results["is_anomaly"]].copy()
+    flagged["date"] = flagged["ds"].dt.date
+    flagged = flagged.sort_values("date")
+
+    windows: list[dict] = []
+    for _, row in flagged.iterrows():
+        d = row["date"]
+        z = abs(row["z_score"]) if row["z_score"] is not None else 0.0
+        if windows and (d - windows[-1]["end"]).days <= gap_days:
+            windows[-1]["end"]    = d
+            windows[-1]["n_days"] += 1
+            if z > windows[-1]["peak_z"]:
+                windows[-1]["peak_z"]    = z
+                windows[-1]["direction"] = row["anomaly_direction"] or "unknown"
+        else:
+            windows.append({
+                "start":     d,
+                "end":       d,
+                "peak_z":    z,
+                "n_days":    1,
+                "direction": row["anomaly_direction"] or "unknown",
+            })
+    return [w for w in windows if w["n_days"] >= min_days or w["peak_z"] >= 3.0]
+
+
 # ── Component decomposition ───────────────────────────────────────────────────
 
 def get_components(product: str) -> tuple[Prophet, pd.DataFrame]:
@@ -230,8 +345,8 @@ def get_components(product: str) -> tuple[Prophet, pd.DataFrame]:
 # ── CLI entry point ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("Running Prophet anomaly detection (z_threshold=2.5)...\n")
-    all_results = detect_all(z_threshold=2.5)
+    print("Running Prophet anomaly detection (z_threshold=3.0)...\n")
+    all_results = detect_all(z_threshold=3.0)
 
     for product, (df, _) in all_results.items():
         anomalies = df[df["is_anomaly"]].copy()

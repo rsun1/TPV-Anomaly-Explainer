@@ -17,21 +17,24 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import sys
 from datetime import date, timedelta
 from pathlib import Path
 
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
 # ── Project imports ────────────────────────────────────────────────────────────
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
+load_dotenv(ROOT / ".env")
 
-from detection.prophet_model import build_holidays_df, detect
+from detection.prophet_model import build_holidays_df, detect, group_flagged_days
 from decomposition.segment_decomposer import decompose
 
-DB_URL     = "postgresql://postgres:olist123@localhost:5432/transactions"
+DB_URL     = os.environ["DATABASE_URL"]
 CACHE_PATH = Path(__file__).parent / "detection_cache.json"
 
 # How many days past an event's end we'll still call it "detected"
@@ -96,30 +99,7 @@ def run_detection(engine, holidays_df, fresh: bool = False) -> dict[str, pd.Data
     return all_results
 
 
-# ── Window grouping ────────────────────────────────────────────────────────────
-
-def _group_flagged_days(results: pd.DataFrame, gap_days: int = 3) -> list[dict]:
-    """
-    Collapse consecutive (or near-consecutive) anomalous days into windows.
-    Two flags are merged into one window if they are within gap_days of each other.
-    """
-    flagged = results[results["is_anomaly"]].copy()
-    flagged["date"] = flagged["ds"].dt.date
-    flagged = flagged.sort_values("date")
-
-    windows: list[dict] = []
-    for _, row in flagged.iterrows():
-        d = row["date"]
-        if windows and (d - windows[-1]["end"]).days <= gap_days:
-            windows[-1]["end"]   = d
-            windows[-1]["peak_z"] = max(windows[-1]["peak_z"], abs(row["z_score"]))
-        else:
-            windows.append({
-                "start":  d,
-                "end":    d,
-                "peak_z": abs(row["z_score"]),
-            })
-    return windows
+# group_flagged_days is imported from detection.prophet_model
 
 
 # ── Detection scoring ──────────────────────────────────────────────────────────
@@ -274,7 +254,7 @@ def main(fresh: bool = False) -> None:
 
     # Pre-compute detected windows per product (for false positive counting)
     all_windows: dict[str, list[dict]] = {
-        product: _group_flagged_days(df)
+        product: group_flagged_days(df)
         for product, df in all_results.items()
     }
 

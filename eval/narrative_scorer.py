@@ -22,16 +22,18 @@ from datetime import date
 from pathlib import Path
 
 import anthropic
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
+load_dotenv(ROOT / ".env")
 
 from decomposition.segment_decomposer import decompose
 from narrative.llm_synthesizer import synthesize
 from eval.scorer import load_ground_truth
 
-DB_URL       = "postgresql://postgres:olist123@localhost:5432/transactions"
+DB_URL       = os.environ["DATABASE_URL"]
 CACHE_PATH   = Path(__file__).parent / "narrative_cache.json"
 JUDGE_MODEL  = "claude-sonnet-4-6"
 
@@ -205,7 +207,7 @@ def _print_report(rows: list[dict]) -> None:
     print()
     hdr = f"  {'Event':<38}  {'Product':<14}  " + "  ".join(f"{short[c]:>4}" for c in CRITERIA) + "  Avg"
     print(hdr)
-    print("  " + "─" * 74)
+    print("  " + "-" * 74)
 
     for r in rows:
         sc     = r["scores"]
@@ -217,7 +219,7 @@ def _print_report(rows: list[dict]) -> None:
     print("AVERAGES")
     for c in CRITERIA:
         avg = sum(r["scores"][c] for r in rows) / len(rows)
-        bar = "█" * int(avg) + "░" * (5 - int(avg))
+        bar = "#" * int(avg) + "." * (5 - int(avg))
         print(f"  {c:<28}  {avg:.1f}  {bar}")
 
     overall = sum(r["overall"] for r in rows) / len(rows)

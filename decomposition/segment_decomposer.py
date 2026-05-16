@@ -18,10 +18,15 @@ from __future__ import annotations
 from itertools import combinations
 from datetime import date, timedelta
 import json
+import os
+from pathlib import Path
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
-DB_URL = "postgresql://postgres:olist123@localhost:5432/transactions"
+load_dotenv(Path(__file__).parent.parent / ".env")
+
+DB_URL = os.environ["DATABASE_URL"]
 
 DIMENSIONS = [
     "merchant_industry",
