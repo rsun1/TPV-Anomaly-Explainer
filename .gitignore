@@ -22,6 +22,7 @@ frontend/out/
 # ── Legacy / scratch ──────────────────────────────────────────────────────────
 olist.sqlite
 check_imports.py
+ANOMALY_EXPLAINER.md
 
 # ── Claude Code internal ──────────────────────────────────────────────────────
 .claude/
